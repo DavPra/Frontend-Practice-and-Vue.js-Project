@@ -4,6 +4,7 @@ let sortByAge = document.getElementById(sortByAge);
 let removeLast = document.getElementById(removeLast);
 let removeAll = document.getElementById(removeAll);
 
+const Personen = [];
 
 class Person {
     constructor(firstName, lastName, birthYear) {
@@ -14,12 +15,17 @@ class Person {
 
 }
 
+if(addPerson) {
+    addPerson.addEventListener('click', function() {
+        Personen.push(Person);
+    })
+}
 
 age() {
         let date = new Date();
         return date.getFullYear() - this.birthYear;
     }
 
-const Personen = [];
+
 
 
