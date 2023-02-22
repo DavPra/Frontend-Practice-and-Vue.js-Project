@@ -1,10 +1,16 @@
-let addPerson = document.getElementById(addPerson);
-let sortByLastName = document.getElementById(sortByLastName);
-let sortByAge = document.getElementById(sortByAge);
-let removeLast = document.getElementById(removeLast);
-let removeAll = document.getElementById(removeAll);
+let firstName 
+firstName = document.getElementById(firstName)
+
+let lastName
+lastName = document.getElementById(lastName)
+
+let birthYear
+birthYear = document.getElementById(birthYear)
+
+let listBody
 
 const Personen = [];
+
 
 class Person {
     constructor(firstName, lastName, birthYear) {
@@ -15,17 +21,23 @@ class Person {
 
 }
 
+
+function addPerson (firstName, lastName, birthYear) {
+    return firstName + lastName + birthYear
+}
+
 if(addPerson) {
     addPerson.addEventListener('click', function() {
-        Personen.push(Person);
+    Personen.push(Person);
     })
 }
 
-age() {
+/* function age() {
         let date = new Date();
         return date.getFullYear() - this.birthYear;
     }
 
+*/
 
 
 
