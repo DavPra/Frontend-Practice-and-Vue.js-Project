@@ -32,5 +32,5 @@ document.getElementById("Pineapple").addEventListener("click", fruitSalad);
 
 function fruitSalad () {
     fruits.push(this.addEventListener("click"))
-    
+    document.getElementById("fruit").innerHTML = fruits
 }
