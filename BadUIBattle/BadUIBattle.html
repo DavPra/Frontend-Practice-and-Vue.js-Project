@@ -20,7 +20,7 @@
 </head>
 
 
-<body>
+<body id="body">
     
     <nav class="navbar navbar-expand-sm" style="background-color: black;">
 
@@ -29,7 +29,9 @@
           <ul class="navbar-nav">
             <li class="nav-item" >
               <a class="nav-link " href="#" data-bs-toggle="tooltip" data-bs-position="right" title="Dieser Button hat einen viel zu langen Tooltip in viel zu kleiner Schrift und
-               vielen unötigen Informationen wie zb. dass dieser Button zu weiteren Informationen zum Thema führt, welche man aber auch kurz als weiter Infos bezeichnen könnte und viel zu lange Wörter enthält wie zb Donaudampfschiffahrtskapitänskajütenschlüssel">Link 1</a>
+               vielen unötigen Informationen wie zb. dass dieser Button zu weiteren Informationen zum Thema führt, welche 
+               man aber auch kurz als weiter Infos bezeichnen könnte und viel zu lange Wörter enthält wie zb 
+               Donaudampfschiffahrtskapitänskajütenschlüssel">Link 1</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link 2</a>
@@ -45,26 +47,62 @@
     
     <div id="mainblock1">
     
-        <h1>Überschrift</h1>
+        <h1>Überschrift 1</h1>
 
         <div onmouseenter="">
             Hier steht ein erstes bisschen Text 
-            welcher Hinweise zur Bedienug der Website gibt aber sich bei jedem mouseover an den unteren Rand des Bilschirms 
+            welcher Hinweise zur Bedienung der Website gibt aber sich bei 
+            jedem mouseover an den unteren Rand des Bilschirms 
             verschwindet um den Blick auf die eigentliche Website freizugeben.
     
         </div>
     </div>
 
+<div class="login" id="pleaselog" style="margin-top: 80px;">
+  Please log into your account before starting your journey. For more info please click <a href="BadUIBattle.html">here</a>
+  
+</div>
+
+<button type="button" class="btn btn-dark" id="loginbutton" style="margin-top: 100px; margin-left: 200px;">Login</button>
+
+
+<p id="loginAsk" style="font-size: larger; margin-top: 20px;"></p>
+
+<p>
+  <form action="#" style="margin-left: 100px; opacity: 0;" id="loginForm">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Doe"><br>
+    <label for="mailad">E-Mail Adress</label><br>
+    <input type="email" id="mailad" name="mailad" value="john.doe@yourmail.com"><br>
+    <label for="pass">Password</label><br>
+    <input type="password" id="pass" name="pass" value="Password"><br><br>
+    
+  </form>
+</p>
+<div>
+  <button type="button" class="btn btn-dark" style="margin-left: 120px;" id="loginsub">Submit</button><br>
+  <button type="button" class="btn btn-dark" style="margin-left: 120px; padding: 50px; opacity: 0;" id="loadButton">
+    <span class="spinner-border spinner-border-sm">Loading...</span>
+  </button>
+</div>
+
+<p id="loginSucc"></p>
+
+
+<!-- HTML to write -->
+<!-- <a href="#" data-bs-toggle="tooltip" data-bs-title="Some tooltip text!">Hover over me</a>
+ Generated markup by the plugin
+<div class="tooltip bs-tooltip-top" role="tooltip">
+  <div class="tooltip-arrow"></div>
+  <div class="tooltip-inner" style="font-size: small;">
+    Some tooltip text!
+  </div>
+</div> -->
+
+
 <script src="BadUIBattle.js"></script>
 </body>
 
 
-<!-- HTML to write -->
-<a href="#" data-bs-toggle="tooltip" data-bs-title="Some tooltip text!">Hover over me</a>
-<!-- Generated markup by the plugin -->
-<div class="tooltip bs-tooltip-top" role="tooltip">
-  <div class="tooltip-arrow"></div>
-  <div class="tooltip-inner">
-    Some tooltip text!
-  </div>
-</div>
