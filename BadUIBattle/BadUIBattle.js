@@ -56,11 +56,24 @@ function bye2() {
 document.getElementById("loginsub").addEventListener("click", loginsub)
 
 function loginsub () {
-    document.getElementById("loginsub").style.opacity = "0"
-    document.getElementById("loadButton").style.opacity = "1"
-    setTimeout(dataConf, 8000)
+    document.getElementById("loginsub").style.opacity = "0";
+    document.getElementById("loadButton").style.opacity = "1";
+    setTimeout(dataLoad, 5000)
 }
 
-function dataConf () {
-    document.getElementById("loginSucc").innerHTML "Thank you for entering your precious data we will process it now."
+function dataLoad () {
+    document.getElementById("loginSucc").innerHTML = "Thank you for entering your precious data we will process it now.";
+    document.getElementById("loadButton").style.opacity = "1";
+    setTimeout(logFin, 5000)
+}
+
+function logFin () {
+    document.getElementById("loadButton").style.opacity = "0";
+    document.getElementById("loginSucc").innerHTML = "Your data has been processed you will now be forwarded. Thank you for using me."
+    setTimeout(page2, 4000)
+
+}
+
+function page2 () {
+    window.location.href ="BadUIBattle2.html";
 }
