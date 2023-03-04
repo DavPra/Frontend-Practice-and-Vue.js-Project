@@ -1,8 +1,66 @@
-let navLink
+document.getElementById("loginbutton").addEventListener("click", loginconf)
 
-navLink = document.getElementsByClassName("nav-link")
 
-function navcolour () {
+function loginconf() {
+        let text;
+        if (confirm("Are you sure you want to proceed with the login process dear user?") == true) {
+          text = "Welcome to our website please enter your data now in the provided form.";
+          document.getElementById("loginForm").style.opacity = "1";
+          setTimeout(reminder1, 5000);
+          setTimeout(reminder2, 10000);
+          setTimeout(reminderAbort, 20000);
+        } else {
+          text = "Poor choice but maybe next time.";
+          document.getElementById("loginAsk").style.fontSize = '80px';
+          document.getElementById("loginAsk").style.color = "red";
+          document.getElementById("body").style.backgroundColor = "black";
+          document.getElementById("loginForm").style.opacity = "0";
+          setTimeout(bye1, 3000)
+        }
+        document.getElementById("loginAsk").innerHTML = text;
+      } 
+
+function reminder1() {
+    alert("Dear user are you still there?");
+}
+
+function reminder2() {
+    alert("Dear user. Have you fallen asleep?")
+}
+
+function reminderAbort() {
+   if (confirm("Dear User do you want to continue or abort?") == true) {
+    loginconf() }
+   else {
+    loginconf() }
+   }
+
+let byetext
+byetext = "Thank you for your visit to our lovely website. See you soon and goodbye"
+
+function bye1() {
+    document.getElementById("body").style.backgroundColor = "white"
+    document.getElementById("body").innerHTML = byetext
+    document.getElementById("body").style.margin ="20%"
+    document.getElementById("body").style.fontSize ="100px"
+    document.getElementById("body").style.color = "black"
+    setTimeout(bye2, 5000)
     
-navLink.innerHTML = 
+}
+
+function bye2() {
+    document.getElementById("body").style.backgroundColor = "black"
+}
+
+
+document.getElementById("loginsub").addEventListener("click", loginsub)
+
+function loginsub () {
+    document.getElementById("loginsub").style.opacity = "0"
+    document.getElementById("loadButton").style.opacity = "1"
+    setTimeout(dataConf, 8000)
+}
+
+function dataConf () {
+    document.getElementById("loginSucc").innerHTML "Thank you for entering your precious data we will process it now."
 }
