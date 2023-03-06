@@ -67,3 +67,5 @@ function page3 () {
   //  100 - age = ageuntilhundred
    // document.getElementById.innerHTML = 
 // }
+
+//local storage js
