@@ -6,6 +6,7 @@ function loginconf() {
         if (confirm("Are you sure you want to proceed with the login process dear user?") == true) {
           text = "Welcome to our website please enter your data now in the provided form.";
           document.getElementById("loginForm").style.opacity = "1";
+          document.getElementById("loginsub").style.display = "";
           setTimeout(reminder1, 5000);
           setTimeout(reminder2, 10000);
           setTimeout(reminderAbort, 20000);
