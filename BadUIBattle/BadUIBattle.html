@@ -20,9 +20,9 @@
 </head>
 
 
-<body id="body">
+<body id="body" style="background-color: darkslategray;">
     
-    <nav class="navbar navbar-expand-sm" style="background-color: black;">
+    <nav class="navbar navbar-expand-sm" style="background-color: black !important;">
 
         <div class="container-fluid">
         
@@ -44,21 +44,8 @@
       
       </nav>
     
-    
-    <div id="mainblock1">
-    
-        <h1>Überschrift 1</h1>
 
-        <div onmouseenter="">
-            Hier steht ein erstes bisschen Text 
-            welcher Hinweise zur Bedienung der Website gibt aber sich bei 
-            jedem mouseover an den unteren Rand des Bilschirms 
-            verschwindet um den Blick auf die eigentliche Website freizugeben.
-    
-        </div>
-    </div>
-
-<div class="login" id="pleaselog" style="margin-top: 80px;">
+<div class="login" id="pleaselog" style="margin-top: 80px; text-align: center; font-size: x-large;">
   Please log into your account before starting your journey. For more info please click <a href="BadUIBattle.html">here</a>
   
 </div>
@@ -77,7 +64,9 @@
     <label for="mailad">E-Mail Adress</label><br>
     <input type="email" id="mailad" name="mailad" value="john.doe@yourmail.com"><br>
     <label for="pass">Password</label><br>
-    <input type="password" id="pass" name="pass" value="Password"><br><br>
+    <input type="password" id="pass" name="pass" value="Password"><br>
+    <label for="birthyear">Birthyear</label><br>
+    <input type="number" id="birthYear" name="birthYear"><br>
     
   </form>
 </p>
@@ -86,9 +75,10 @@
   <button type="button" class="btn btn-dark" style="margin-left: 120px; padding: 50px; opacity: 0;" id="loadButton">
     <span class="spinner-border spinner-border-sm">Loading...</span>
   </button>
+  <button type="button" class="btn btn-dark" style="margin-left: 1500px; opacity: 0;" id="cheatAge">Cheat Age</button>
 </div>
 
-<p id="loginSucc"></p>
+<p style="font-size: x-large; color: chartreuse;" id="loginSucc"></p>
 
 
 <script src="BadUIBattle.js"></script>

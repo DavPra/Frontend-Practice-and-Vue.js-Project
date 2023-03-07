@@ -16,7 +16,7 @@ function loginconf() {
           document.getElementById("loginAsk").style.color = "red";
           document.getElementById("body").style.backgroundColor = "black";
           document.getElementById("loginForm").style.opacity = "0";
-          setTimeout(bye1, 3000)
+          setTimeout(bye1, 2000)
         }
         document.getElementById("loginAsk").innerHTML = text;
       } 
@@ -54,7 +54,36 @@ function bye2() {
 }
 
 
-document.getElementById("loginsub").addEventListener("click", loginsub)
+document.getElementById("loginsub").addEventListener("click", loginCheck)
+
+//function yearCheck () {
+  //  let birthYear = document.getElementById("birthYear").value;
+   // if (isNaN(birthYear) == true) {
+    //    document.getElementById.innerHTML = "A Birthyear needs to be an Number unless you are Roman."
+    //} else {
+     //   loginCheck ()
+   // }
+//}
+
+
+function loginCheck () {
+    let birthYear = document.getElementById("birthYear").value;
+    let age = 2023 - birthYear
+    let fName = document.getElementById("fname").value;
+    localStorage.setItem("fName", fName)
+    
+    if (age > 100) {
+        localStorage.setItem("Age", age)
+        document.getElementById("loginSucc").innerHTML = "You are just the right Age to enter."
+        loginsub ()
+    } else {
+        localStorage.setItem("Age", age)
+        document.getElementById("loginSucc").innerHTML = "You must be at least 100 years old to enter. Please age up or look to the right of this page.";
+        document.getElementById("cheatAge").style.opacity = "1";
+    }
+}
+
+document.getElementById("cheatAge").addEventListener("click", loginsub)
 
 function loginsub () {
     document.getElementById("loginsub").style.opacity = "0";

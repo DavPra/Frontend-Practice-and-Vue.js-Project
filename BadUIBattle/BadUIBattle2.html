@@ -12,7 +12,9 @@
  <link rel="stylesheet" href="BadUIBattle.css">   
 
  <style>
-
+    .nav-link:hover {
+        color: black;
+    }
  </style>
 </head>
 
@@ -58,11 +60,27 @@
     
     </nav>
 
- <div class="container-fluid" style="border: solid 2px black" id="page3main">
-  <span>Hello</span> <span id="fName"></span> <span>this is your profile</span>
+ <div class="container-fluid" style="border: solid 2px black; font-size: xx-large; text-align: center;" id="page3main">
+  <span>Hello</span> <span class="fName"></span> <span>this is your profile</span>
  </div>
 
+  <div class="container" id="avatarChoose"  style="border: solid 5px black; margin: 50px; height: fit-content; background-color: yellow; width: fit-content;">
+    <h2>Please choose an Avatar</h2>
+    <p><img id="avatar" src="avatars.jpg" alt="Avatars"></p>
+  </div>
 
+  <div class="card" style="width: fit-content; display: none;" id="profileCard">
+    <img class="card-img-top" src="avatars.jpg" alt="Avatar">
+    <div class="card-body">
+      <h2 class="card-title" style="font-size: x-large;">
+        <span class="fName"></span> <span class="fName"></span>
+      </h2>
+      <p class="card-text">In <span id="toHun"></span> years you are old enough to visit this page.</p>
+
+    </div>
+  
+  
+  </div>
 
 
 

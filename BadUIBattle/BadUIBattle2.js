@@ -61,11 +61,22 @@ function page2timer () {
 function page3 () {
     document.getElementById("page3").style.display = ""
     document.getElementById("fruitSalad").style.display = "none"
+    let fName = sessionStorage.getItem("fName")
+    document.getElementsByClassName("fName").innerHTML = fName
 }
 
-//function untilHundred() {
-  //  100 - age = ageuntilhundred
-   // document.getElementById.innerHTML = 
-// }
+document.getElementById("avatar").addEventListener("click",showProfile)
 
-//local storage js
+function showProfile () {
+    document.getElementById("profileCard").style.display = ""
+    document.getElementById("avatarChoose").style.display = "none"
+}
+
+
+
+function untilHundred() {
+    let age = sessionStorage.getItem("Age")
+    let ageuntilhundred = 100 - age
+    console.log (ageuntilhundred)
+    document.getElementById("toHun").innerHTML = ageuntilhundred
+}
