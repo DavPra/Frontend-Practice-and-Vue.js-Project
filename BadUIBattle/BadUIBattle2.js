@@ -61,7 +61,7 @@ function page2timer () {
 function page3 () {
     document.getElementById("page3").style.display = ""
     document.getElementById("fruitSalad").style.display = "none"
-    let fName = sessionStorage.getItem("fName")
+    let fName = localStorage.getItem("fName")
     document.getElementsByClassName("fName").innerHTML = fName
 }
 
@@ -75,7 +75,7 @@ function showProfile () {
 
 
 function untilHundred() {
-    let age = sessionStorage.getItem("Age")
+    let age = localStorage.getItem("Age")
     let ageuntilhundred = 100 - age
     console.log (ageuntilhundred)
     document.getElementById("toHun").innerHTML = ageuntilhundred
