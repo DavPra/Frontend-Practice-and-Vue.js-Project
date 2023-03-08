@@ -70,11 +70,12 @@ document.getElementById("avatar").addEventListener("click",showProfile)
 function showProfile () {
     document.getElementById("profileCard").style.display = ""
     document.getElementById("avatarChoose").style.display = "none"
+    untilHundred ()
 }
 
 
 
-function untilHundred() {
+function untilHundred () {
     let age = localStorage.getItem("Age")
     let ageuntilhundred = 100 - age
     console.log (ageuntilhundred)
