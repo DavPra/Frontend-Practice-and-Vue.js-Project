@@ -1,23 +1,23 @@
 let greeting = document.getElementById("greeting")
 
-setTimeout (greet, 500)
+setTimeout (greet, 5000)
 
 function greet () {
     document.getElementById("greeting").innerHTML = "Thank you for your time applicant. Please stand by while I test your aptitude and patience."
-    setTimeout (apTest, 500)
+    setTimeout (apTest, 5000)
 }
 
 function apTest () {
     document.getElementById("greeting").style.display = "none"
     document.getElementById("fastLane").style.display = ""
-    setTimeout (Test, 500)
+    setTimeout (Test, 5000)
 }
 
 document.getElementById("fastLane").addEventListener("click", skip)
 
 function skip () {
     document.getElementById("impatience").style.display =""
-    setTimeout (window.location.href = "BadUIBattle.html", 300);
+    setTimeout (window.location.href = "BadUIBattle.html", 3000);
 }
 
 function Test () {
@@ -61,7 +61,7 @@ function page2timer () {
 function page3 () {
     document.getElementById("page3").style.display = ""
     document.getElementById("fruitSalad").style.display = "none"
-    let fName = sessionStorage.getItem("fName")
+    let fName = localStorage.getItem("fName")
     document.getElementsByClassName("fName").innerHTML = fName
 }
 
@@ -70,12 +70,13 @@ document.getElementById("avatar").addEventListener("click",showProfile)
 function showProfile () {
     document.getElementById("profileCard").style.display = ""
     document.getElementById("avatarChoose").style.display = "none"
+    untilHundred ()
 }
 
 
 
-function untilHundred() {
-    let age = sessionStorage.getItem("Age")
+function untilHundred () {
+    let age = localStorage.getItem("Age")
     let ageuntilhundred = 100 - age
     console.log (ageuntilhundred)
     document.getElementById("toHun").innerHTML = ageuntilhundred
