@@ -1,21 +1,21 @@
 <template>
   <div>
-    <h1>Persons List</h1>
     <form @submit.prevent="addPerson">
       <div>
-        <label for="firstName">First Name:</label>
-        <input id="firstName" v-model="firstName" required>
+        <label for="first-name">First Name:</label>
+        <input id="first-name" type="text" v-model="firstName" required>
       </div>
       <div>
-        <label for="lastName">Last Name:</label>
-        <input id="lastName" v-model="lastName" required>
+        <label for="last-name">Last Name:</label>
+        <input id="last-name" type="text" v-model="lastName" required>
       </div>
       <div>
         <label for="age">Age:</label>
-        <input id="age" v-model.number="age" required>
+        <input id="age" type="number" v-model.number="age" required>
       </div>
       <button type="submit">Add Person</button>
     </form>
+
     <table>
       <thead>
         <tr>
@@ -25,32 +25,52 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(person, index) in persons" :key="index">
+        <tr v-for="person in persons" :key="person.id">
           <td>{{ person.firstName }}</td>
           <td>{{ person.lastName }}</td>
           <td>{{ person.age }}</td>
         </tr>
       </tbody>
     </table>
+
+    <button v-if="persons.length > 0" @click="deletePerson">Delete Last Entry</button>
   </div>
-  </template>
+</template>
 
-    <script>
-import { defineComponent, ref, computed } from 'vue';
+<script>
+import { ref } from 'vue';
 
-export default defineComponent({
-  name: 'PersonsList',
+export default {
   setup() {
+    const persons = ref([]);
     const firstName = ref('');
     const lastName = ref('');
-    const age = ref(0);
-    const persons = ref([]);
+    const age = ref('');
 
-    function addPerson() {
-      const person = { firstName: firstName.value, lastName: lastName.value, age: age.value };
-      persons.value.push(person);
+    const addPerson = () => {
+      persons.value.push({ 
+        id: persons.value.length + 1,
+        firstName: firstName.value,
+        lastName: lastName.value,
+        age: age.value
+      });
       firstName.value = '';
       lastName.value = '';
-      age.value = 0;
-    }
-  </script>
+      age.value = '';
+    };
+
+    const deletePerson = () => {
+      persons.value.pop();
+    };
+
+    return {
+      persons,
+      firstName,
+      lastName,
+      age,
+      addPerson,
+      deletePerson,
+    };
+  },
+};
+</script>
