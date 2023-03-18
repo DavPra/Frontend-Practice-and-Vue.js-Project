@@ -1,16 +1,40 @@
+<script setup>
+
+const emit = defineEmits('update')
+
+const year = computed(() => {
+    let currentYear = new Date().getFullYear
+    return currentYear - age.value;
+})
+
+function emitAddPerson() {
+    emit('update',{
+        firstname: firstname.value,
+        lastname: lastname.value
+        year: year.value
+    })
+
+    firstname.value = ''
+    lastname.value = ''
+    age.value = ''
+}
+</script>
+
+
+
 <template>
-<form @submit.prevent="addPerson">
-    <div>
-      <label for="first-name">First Name:</label> <br>
-      <input id="first-name" type="text" v-model="firstName" required>
+<form class="form" @submit.prevent="emitAddPerson">
+    <div class="form-group">
+      <label for="firstName">First Name:</label> <br>
+      <input type="text" v-model="firstName" required>
     </div>
-    <div>
-      <label for="last-name">Last Name:</label> <br>
-      <input id="last-name" type="text" v-model="lastName" required>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label> <br>
+      <input type="text" v-model="lastName" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="age">Age:</label> <br>
-      <input id="age" type="number" v-model.number="age" required>
+      <input type="number" v-model.number="age" required>
     </div> <br>
     <button type="submit" class="btn btn-primary">Add Person</button>
   </form>
