@@ -25,7 +25,7 @@
 
 <template>
   <div class="container">
-    <h1 class="bg-primary text-white rounded px-4">PersonenArray - mit Roberts BLABLA</h1>
+    <h1 class="bg-primary text-white rounded px-4">PersonenArray</h1>
     <div class="row">
       <div class="col-sm-6 bg-light">
         <PersonForm @update="addPerson"/>
