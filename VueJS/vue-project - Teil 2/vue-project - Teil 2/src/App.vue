@@ -2,7 +2,8 @@
    import { ref } from 'vue';
    import PersonEntry from './components/PersonEntry.vue';
    import PersonForm from './components/PersonForm.vue';
-
+  
+  
    const persons = ref([])
 
    function addPerson(person) {
@@ -24,36 +25,21 @@
 </script>
 
 <template>
-  <div class="container">
-    <h1 class="bg-primary text-white rounded px-4">PersonenArray</h1>
-    <div class="row">
-      <div class="col-sm-6 bg-light">
-        <PersonForm @update="addPerson"/>
-      </div>
-      <div class="col-sm-6 mt-4">
-        <div class="form-group">
-          <button class="btn btn-danger mb-4" @click="removeLast()">Letztes Element löschen</button><br>
-          <button class="btn btn-danger" @click="removeAll()">Alles löschen</button>
-        </div>
-        <div class="table mt-4">
-          <table class="table">
-            <thead>
-              <th scope="col">Vorname</th>
-              <th scope="col">Nachname</th>
-              <th scope="col">Geburtsjahr</th>
-            </thead>
-            <tbody>
-              <tr v-for="person in persons">
-                <PersonEntry :person='person'/>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+
+    <header class="container border-bottom">
+    <ul class="nav">
+    <li class="nav-item">
+    <router-link class="nav-link" to="/">Home</router-link>
+    </li>
+    <li class="nav-item">
+    <router-link class="nav-link" to="/createPerson">Create Person</router-link>
+    </li>
+    </ul>
+    </header>
+    
+  <div>
+    <RouterView/>
   </div>
 </template>
 
-<style scoped>
 
-</style>

@@ -1,6 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
+import homeView from '@/views/homeView.vue';
+import createPersonView from '@/views/createPersonView.vue';
  
-const routes = []
+const routes = [
+    {path:'/', component: homeView},
+    {path: '/createPerson', component: createPersonView},
+]
 
 const router = createRouter({
     routes,
