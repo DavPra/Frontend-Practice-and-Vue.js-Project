@@ -35,7 +35,7 @@
     </table>
 
     <button v-if="persons.length > 0" @click="deletePerson" class="btn btn-primary">Delete Last Entry</button>
-    <button v-if="persons.length > 0" @click="deletePerson" class="btn btn-primary" style="margin-left:10px">Delete All</button>
+    <button v-if="persons.length > 0" @click="deleteAll" class="btn btn-primary" style="margin-left:10px">Delete All</button>
   </div>
 </template>
 
@@ -64,6 +64,11 @@ export default {
     const deletePerson = () => {
       persons.value.pop();
     };
+
+    const deleteAll = () => {
+      persons.forEach( {persons.pop()
+    })
+  }
 
     return {
       persons,
