@@ -97,9 +97,9 @@
 
             return 'Bitte geben Sie ein gültiges Passwort ein.'
         },
-        value => {
-            if ()
-        }
+        //value => {
+          //  if ()
+        //}
 
       ]
     }),
