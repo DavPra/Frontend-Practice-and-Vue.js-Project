@@ -9,8 +9,8 @@
               <v-text-field
                 v-model="firstname"
                 :rules="nameRules"
-                :counter="10"
-                label="First name"
+                :counter="20"
+                label="Vorname"
                 required
               ></v-text-field>
             </v-col>
@@ -22,8 +22,8 @@
               <v-text-field
                 v-model="lastname"
                 :rules="nameRules"
-                :counter="10"
-                label="Last name"
+                :counter="20"
+                label="Nachname"
                 required
               ></v-text-field>
             </v-col>
@@ -39,6 +39,19 @@
                 required
               ></v-text-field>
             </v-col>
+
+            <v-col
+              cols="12"
+              md="4"
+            >
+              <v-text-field
+                v-model="password"
+                :rules="passwordRules"
+                label="Passwort"
+                required
+              ></v-text-field>
+            </v-col>
+
           </v-row>
         </v-container>
       </v-form>
@@ -56,10 +69,10 @@
         value => {
           if (value) return true
 
-          return 'Name is requred.'
+          return 'Geben Sie bitte ihren Namen ein.'
         },
         value => {
-          if (value?.length <= 10) return true
+          if (value?.length <= 20) return true
 
           return 'Name must be less than 10 characters.'
         },
@@ -69,14 +82,26 @@
         value => {
           if (value) return true
 
-          return 'E-mail is requred.'
+          return 'Die Angabe einer Email-Adresse ist erforderlich.'
         },
         value => {
           if (/.+@.+\..+/.test(value)) return true
 
-          return 'E-mail must be valid.'
+          return 'Bitte geben sie eine gültige Email-Adresse an.'
         },
       ],
+      password: '',
+      passwordRules: [
+        value => {
+            if (value) return true
+
+            return 'Bitte geben Sie ein gültiges Passwort ein.'
+        },
+        value => {
+            if ()
+        }
+
+      ]
     }),
   }
 </script>
