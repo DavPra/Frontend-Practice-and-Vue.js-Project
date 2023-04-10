@@ -10,10 +10,10 @@ import NewListbutton from './components/NewListButton.vue'
 <template>
 
 <div>
-  <SupermarktCard/>
-  <ApothekeCard/>
-  <DrogerieCard/>
-  <NewListbutton/>
+    <SupermarktCard/>
+    <ApothekeCard/>
+    <DrogerieCard/>
+    <NewListbutton/>
 
 </div> 
 
