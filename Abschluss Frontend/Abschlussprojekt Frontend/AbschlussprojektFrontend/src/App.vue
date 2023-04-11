@@ -11,7 +11,7 @@ import StartPageView from './views/StartPageView.vue';
 
 <template>
 
-<StartPageView/>
+<RouterView/>
 
 
 

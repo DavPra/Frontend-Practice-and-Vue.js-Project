@@ -5,7 +5,7 @@ import TestView from '@/views/TestView.vue'
 
 const routes = [
 { path: '/', component: StartPageView },
-{ path: '/login', component: LoginPageView},
+{ path: '/login', name: 'login', component: LoginPageView},
 { path: '/test' , component: TestView}
 ]
 
@@ -13,4 +13,4 @@ const router = createRouter({
 routes,
 history: createWebHistory()
 })
-export default {router}
+export {router}

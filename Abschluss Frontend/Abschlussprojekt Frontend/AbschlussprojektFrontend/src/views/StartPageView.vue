@@ -34,17 +34,3 @@
     </v-container>
    
 </template>
-
-<script>
-  export default {
-    data: () => ({
-      justify: [
-        'start',
-        'center',
-        'end',
-        'space-around',
-        'space-between',
-      ],
-    }),
-  }
-</script>
