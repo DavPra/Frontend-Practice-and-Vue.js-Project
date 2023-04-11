@@ -5,13 +5,14 @@ import SupermarktCard from './components/SupermarktCard.vue';
 import TestCard from './components/TestCard.vue';
 import DrogerieCard from './components/DrogerieCard.vue';
 import NewListbutton from './components/NewListButton.vue';
+import TestView from './views/TestView.vue';
+import StartPageView from './views/StartPageView.vue';
 </script>
 
 <template>
 
-<div>
+<StartPageView/>
 
 
-</div> 
 
 </template>
