@@ -1,6 +1,6 @@
 <script setup>
 import ApothekeCard from './components/ApothekeCard.vue';
-import LoginPage from './components/LoginPage.vue';
+import LoginPage from './views/LoginPageView.vue';
 import SupermarktCard from './components/SupermarktCard.vue';
 import TestCard from './components/TestCard.vue';
 import DrogerieCard from './components/DrogerieCard.vue';
