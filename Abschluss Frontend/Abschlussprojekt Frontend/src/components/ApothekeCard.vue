@@ -1,5 +1,5 @@
 <template>
-    <v-card outlined :variant="'tonal'" style="margin:20px">
+    <v-card outlined :variant="'tonal'" class="mx-auto" width="100px">
       <v-card-title>
         <span class="headline font-weight-bold">Einkaufsliste Apotheke</span> <br>
         <span class="caption">{{ currentDate }}</span>

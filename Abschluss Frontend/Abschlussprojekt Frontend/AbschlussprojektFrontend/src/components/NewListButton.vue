@@ -1,6 +1,6 @@
 <template>
     <v-btn color="primary" dark @click="NewList">
-      <v-icon left:mdi-plus></v-icon>
+      <v-icon icon=mdi-plus size="x-large"></v-icon>
       Neue Einkaufsliste
     </v-btn>
   </template>
