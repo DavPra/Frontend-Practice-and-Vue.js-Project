@@ -21,7 +21,8 @@
             <v-btn>
                 <router-link to="/login">Login</router-link>
             </v-btn>
-            <v-btn>Registrieren</v-btn>
+            <v-btn>
+               <router-link to="/register">Registrieren</router-link>  </v-btn>
         </v-card-actions>
 
     </v-card>
