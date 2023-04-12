@@ -20,7 +20,7 @@ function addItem() {
 
 <template>
 
-        <v-card height="auto" width="300" title="Neuer Eintrag">
+        <v-card height="auto" width="300" title="Neuer Eintrag" style="margin-left: 20px;">
             
           <v-form @submit.prevent>
             <v-text-field

@@ -1,5 +1,16 @@
+<script setup>
+import { useItemStore } from '@/store/ItemStore';
+import { ref } from 'vue';
+
+const ItemStore = useItemStore();
+const currentDate = ref(new Date().toLocaleDateString())
+
+
+</script>
+
+
 <template>
-    <v-card outlined :variant="'tonal'" style="margin:20px">
+    <v-card outlined :variant="'tonal'" style="margin:20px" color="blue-lighten-4">
       <v-card-title>
         <span class="headline font-weight-bold">Einkaufsliste Supermarkt</span> <br>
         <span class="caption">{{ currentDate }}</span>
@@ -13,14 +24,3 @@
       </v-card-actions>
     </v-card>
   </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        currentDate: new Date().toLocaleDateString(),
-      };
-    },
-  };
-  </script>
-  

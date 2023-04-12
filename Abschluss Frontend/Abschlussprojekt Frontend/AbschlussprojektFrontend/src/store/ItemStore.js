@@ -1,7 +1,6 @@
-// Utilities
 import { defineStore } from 'pinia'
 
-export const useItemStore = defineStore('app', {
+export const useItemStore = defineStore('item', {
   state: () => ({
     Items: [],
   }),

@@ -1,28 +1,25 @@
-  <script>
+  <script setup>
   import { useItemStore } from '@/store/ItemStore';
+  import { ref } from 'vue';
 
   const ItemStore = useItemStore();
-  
-  export default {
-    data() {
-      return {
-        currentDate: new Date().toLocaleDateString(),
-      };
-    },
-  };
+  const currentDate = ref(new Date().toLocaleDateString())
+
 
   </script>
 
 
 
 <template>
-    <v-card outlined :variant="'tonal'" style="margin:20px">
+    <v-card outlined :variant="'tonal'" style="margin:20px" color="green-lighten-3">
       <v-card-title>
         <span class="headline font-weight-bold">Einkaufsliste Apotheke</span> <br>
         <span class="caption">{{ currentDate }}</span>
       </v-card-title>
       <v-card-text>
-        "..."
+        <ul style="margin-top: 20px;">
+          <li v-for="Items in ItemStore.Items">{{Items.name}}</li>
+      </ul> 
       </v-card-text>
       <v-card-actions>
         <v-btn>Bearbeiten</v-btn>
