@@ -7,11 +7,13 @@ import DrogerieCard from './components/DrogerieCard.vue';
 import NewListbutton from './components/NewListButton.vue';
 import TestView from './views/TestView.vue';
 import StartPageView from './views/StartPageView.vue';
+import ListForm from './components/ListForm.vue';
 </script>
 
 <template>
-
 <RouterView/>
+<ListForm/>
+<ApothekeCard/>
 
 
 

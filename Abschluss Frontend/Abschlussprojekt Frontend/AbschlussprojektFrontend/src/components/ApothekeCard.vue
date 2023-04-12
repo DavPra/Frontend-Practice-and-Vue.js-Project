@@ -1,3 +1,20 @@
+  <script>
+  import { useItemStore } from '@/store/ItemStore';
+
+  const ItemStore = useItemStore();
+  
+  export default {
+    data() {
+      return {
+        currentDate: new Date().toLocaleDateString(),
+      };
+    },
+  };
+
+  </script>
+
+
+
 <template>
     <v-card outlined :variant="'tonal'" style="margin:20px">
       <v-card-title>
@@ -11,16 +28,8 @@
         <v-btn>Bearbeiten</v-btn>
         <v-btn>Löschen</v-btn>
       </v-card-actions>
-    </v-card>
+          </v-card>
   </template>
   
-  <script>
-  export default {
-    data() {
-      return {
-        currentDate: new Date().toLocaleDateString(),
-      };
-    },
-  };
-  </script>
+
   

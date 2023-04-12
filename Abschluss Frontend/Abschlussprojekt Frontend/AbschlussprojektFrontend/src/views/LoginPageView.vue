@@ -1,107 +1,60 @@
 <template>
-    <v-form v-model="valid">
         <v-container>
-          <v-row>
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
-                v-model="firstname"
-                :rules="nameRules"
-                :counter="50" 
-                label="Vorname"
-                required
-              ></v-text-field>
-            </v-col>
+            <v-row
+              align="center"
+              no-gutters
+              style="height:750px"
+              
+              >
     
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
-                v-model="lastname"
-                :rules="nameRules"
-                :counter="50"
-                label="Nachname"
-                required
-              ></v-text-field>
-            </v-col>
     
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
+        <v-col align-self="center">
+            <v-sheet class="pa-10 ma-10">
+         
+       
+        <v-card 
+        style="width: fit-content;"
+        title="Login" 
+        text="Melden Sie sich mit E-Mail Adresse und Passwort an."
+        variant="tonal">
+            <v-card-actions>
+                <v-text-field
                 v-model="email"
                 :rules="emailRules"
-                label="E-mail"
+                label="E-Mail"
                 required
               ></v-text-field>
-            </v-col>
 
-            <v-col
-              cols="12"
-              md="4"
-            >
               <v-text-field
                 v-model="password"
                 :rules="passwordRules"
                 label="Passwort"
                 required
               ></v-text-field>
-            </v-col>
-
-          </v-row>
+    
+                <v-btn
+                @click=""
+                >
+                Login
+                </v-btn>
+            
+            </v-card-actions>
+    
+        </v-card>
+    
+       </v-sheet>
+          </v-col>
+    
+            </v-row>
+    
         </v-container>
-      </v-form>
-
+       
 
 </template>
 
-<script>
-  export default {
-    data: () => ({
-      valid: false,
-      firstname: '',
-      lastname: '',
-      nameRules: [
-        value => {
-          if (value) return true
 
-          return 'Geben Sie bitte ihren Namen ein.'
-        },
-        value => {
-          if (value?.length <= 20) return true
+<script setup>
 
-          return 'Name must be less than 10 characters.'
-        },
-      ],
-      email: '',
-      emailRules: [
-        value => {
-          if (value) return true
 
-          return 'Die Angabe einer Email-Adresse ist erforderlich.'
-        },
-        value => {
-          if (/.+@.+\..+/.test(value)) return true
 
-          return 'Bitte geben sie eine gültige Email-Adresse an.'
-        },
-      ],
-      password: '',
-      passwordRules: [
-        value => {
-            if (value) return true
-
-            return 'Bitte geben Sie ein gültiges Passwort ein.'
-        },
-        //value => {
-          //  if ()
-        //}
-
-      ]
-    }),
-  }
 </script>
