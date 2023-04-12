@@ -16,7 +16,9 @@ const currentDate = ref(new Date().toLocaleDateString())
         <span class="caption">{{ currentDate }}</span>
       </v-card-title>
       <v-card-text>
-        "..."
+        <ul style="margin-top: 20px;">
+          <li v-for="Items in ItemStore.Items">{{Items.name}}</li>
+      </ul> 
       </v-card-text>
       <v-card-actions>
         <v-btn>Bearbeiten</v-btn>
