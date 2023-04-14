@@ -12,8 +12,7 @@ import ListForm from './components/ListForm.vue';
 
 <template>
 <RouterView/>
-<ListForm/>
-<ApothekeCard/>
+
 
 
 

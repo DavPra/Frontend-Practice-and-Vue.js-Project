@@ -23,6 +23,8 @@
             </v-btn>
             <v-btn>
                <router-link to="/register">Registrieren</router-link>  </v-btn>
+               <v-btn>
+                <router-link to="/skip">Skip</router-link>  </v-btn>
         </v-card-actions>
 
     </v-card>
