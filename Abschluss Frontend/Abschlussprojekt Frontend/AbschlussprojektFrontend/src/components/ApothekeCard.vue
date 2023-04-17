@@ -1,10 +1,15 @@
   <script setup>
   import { useItemStore } from '@/store/ItemStore';
   import { ref } from 'vue';
+  import axios from 'axios';
 
   const ItemStore = useItemStore();
   const currentDate = ref(new Date().toLocaleDateString())
 
+  function delList (){
+   axios.delete ('https://codersbay.a-scho-wurscht.at/api/{taskID}')
+
+  }
 
   </script>
 
@@ -23,7 +28,7 @@
       </v-card-text>
       <v-card-actions>
         <v-btn>Bearbeiten</v-btn>
-        <v-btn>Löschen</v-btn>
+        <v-btn @click="delList">Löschen</v-btn>
       </v-card-actions>
           </v-card>
   </template>

@@ -8,7 +8,7 @@ import NewListButtonDR from '@/components/NewListButtonDR.vue';
 import NewListButtonSM from '@/components/NewListButtonSM.vue';
 
 import { ref } from 'vue';
-import axios from 'axios';
+//import axios from 'axios';
 
 const numberOfSMCards = ref(0);
 const numberOfDRCards = ref(0);
@@ -27,24 +27,46 @@ function addAPCard() {
 }
 
 
-axios.get("https://codersbay.a-scho-wurscht.at/api/auth")
+//axios.get("https://codersbay.a-scho-wurscht.at/api/auth")
 
 </script>
 
 
 <template>
-    <div>
-      <div v-for="i in numberOfSMCards" :key="i">
-        <SupermarktCard/>
+    <div class="card-container">
+        
+        <v-container>
+          <div class="card" v-for="i in numberOfSMCards" :key="i">
+            <SupermarktCard/>
+          </div>
+          <NewListButtonSM @newListSM="addSMCard" />
+        </v-container>
+        <v-container class="pa-4">
+          <div v-for="i in numberOfDRCards" :key="i">
+            <DrogerieCard/>
+          </div>
+          <NewListButtonDR @newListDR="addDRCards" />
+        </v-container>
+        <v-container class="pa-4">
+          <div v-for="i in numberOfAPCards" :key="i">
+            <ApothekeCard/>
+          </div>
+          <NewListButtonAP @newListAP="addAPCard" />
+        </v-container>
       </div>
-      <NewListButtonSM @newListSM="addSMCard" />
-      <div v-for="i in numberOfDRCards" :key="i">
-        <DrogerieCard/>
-      </div>
-      <NewListButtonDR @newListDR="addDRCards" />
-      <div v-for="i in numberOfAPCards" :key="i">
-        <ApothekeCard/>
-      </div>
-      <NewListButtonAP @newListAP="addAPCard" />
-    </div>
   </template>
+
+<style scoped>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    width: 400px;
+    margin: 10px;
+  }
+
+
+</style>
