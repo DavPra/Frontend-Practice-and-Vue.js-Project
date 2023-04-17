@@ -4,13 +4,15 @@ import TestView from '@/views/TestView.vue'
 import RegisterPageView from '@/views/RegisterPageView.vue'
 import LoginPageView from '@/views/LoginPageView.vue'
 import CardsView from '@/views/CardsView.vue'
+import APITestView from '@/views/APITestView'
 
 const routes = [
 { path: '/', component: StartPageView },
 { path: '/register', name: 'register', component: RegisterPageView},
 { path: '/test' , component: TestView},
 { path: '/login', component: LoginPageView},
-{ path: '/skip', component: CardsView}
+{ path: '/skip', component: CardsView},
+{ path: '/ApiTest', component: APITestView}
 ]
 
 const router = createRouter({
