@@ -3,7 +3,7 @@
    import ListForm from './ListForm.vue';
    import { defineEmits } from 'vue';
 
-   const emit = defineEmits(['newListSM']);
+   const emit = defineEmits(['newListSM','showForm']);
 
    const showForm = ref(false);
 
