@@ -34,6 +34,9 @@ const submitForm = async () => {
               <v-text-field label="Passwort" v-model="password" type="password" required></v-text-field>
               <v-alert v-if="errorMessage" type="error">{{ errorMessage }}</v-alert>
               <v-btn type="submit" color="primary" block>Login</v-btn>
+              <v-btn style="margin-top: 20px;" color="primary" block>
+                <router-link to="/register">Registrieren</router-link>
+              </v-btn>
             </v-form>
           </v-card-text>
         </v-card>
