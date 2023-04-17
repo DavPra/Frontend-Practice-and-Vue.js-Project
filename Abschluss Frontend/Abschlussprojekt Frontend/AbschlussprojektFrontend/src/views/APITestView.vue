@@ -8,7 +8,7 @@
   const email = ref('')
   const password = ref('')
   const username = ref('')
-  const termsOfUseAccepted = ref(true)
+  const termsOfUseAccepted = ref(false)
   
   const submitForm = async () => {
     if (!termsOfUseAccepted.value) {
@@ -60,8 +60,8 @@
           <input id="password" type="password" v-model="password" required>
         </div>
         <div>
-          <input id="accept" type="checkbox" v-model="accepted" required>
-          <label for="accept">I accept the terms and services</label>
+          <input id="termsOfUseAccepted" type="checkbox" v-model="termsOfUseAccepted" required>
+          <label for="termsOfUseAccepted">Ich akzeptiere die AGB</label>
         </div>
         <div>
           <button type="submit">Registrieren</button>

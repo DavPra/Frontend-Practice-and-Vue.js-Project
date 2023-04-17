@@ -1,60 +1,45 @@
+<script setup>
+import axios from 'axios'
+import { ref } from 'vue'
+
+const email = ref('')
+const password = ref('')
+const errorMessage = ref('')
+
+const submitForm = async () => {
+  const userData = { email: email.value, password: password.value }
+  try {
+    const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/auth/login', userData)
+    console.log(response.data)} 
+
+  catch (error) {
+    console.error(error)
+    errorMessage.value = 'E-Mail Adresse oder Passwort sind fehlerhaft. Bitte überprüfen sie ihre Eingaben.'
+  }
+}
+</script>
+
+
 <template>
-        <v-container>
-            <v-row
-              align="center"
-              no-gutters
-              style="height:750px"
-              
-              >
-    
-    
-        <v-col align-self="center">
-            <v-sheet class="pa-10 ma-10">
-         
-       
-        <v-card 
-        style="width: fit-content;"
-        title="Login" 
-        text="Melden Sie sich mit E-Mail Adresse und Passwort an."
-        variant="tonal">
-            <v-card-actions>
-                <v-text-field
-                v-model="email"
-                :rules="emailRules"
-                label="E-Mail"
-                required
-              ></v-text-field>
-
-              <v-text-field
-                v-model="password"
-                :rules="passwordRules"
-                label="Passwort"
-                required
-              ></v-text-field>
-    
-                <v-btn
-                @click=""
-                >
-                Login
-                </v-btn>
-            
-            </v-card-actions>
-    
+  <v-container class="fill-height">
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="8" md="4">
+        <v-card class="elevation-12">
+          <v-toolbar color="primary" dark flat>
+            <v-toolbar-title>Login</v-toolbar-title>
+          </v-toolbar>
+          <v-card-text>
+            <v-form @submit.prevent="submitForm">
+              <v-text-field label="E-Mail" v-model="email" required></v-text-field>
+              <v-text-field label="Passwort" v-model="password" type="password" required></v-text-field>
+              <v-alert v-if="errorMessage" type="error">{{ errorMessage }}</v-alert>
+              <v-btn type="submit" color="primary" block>Login</v-btn>
+            </v-form>
+          </v-card-text>
         </v-card>
-    
-       </v-sheet>
-          </v-col>
-    
-            </v-row>
-    
-        </v-container>
-       
-
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 
-<script setup>
-
-
-
-</script>
