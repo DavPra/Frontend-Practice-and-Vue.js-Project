@@ -17,10 +17,25 @@
           }
         })
         .catch(error => {
+          if(response.status === 401) {
+            alert('Bitte loggen Sie sich ein um die Listen zu bearbeiten.')
+          }
+          else if (response.status === 403) {
+            alert('Das ist nicht ihre Einkaufsliste.')
+          }
           console.error('Error deleting list:', error);
         });
     }
   }
+  const formOn = false
+
+  function editList () {
+
+      formOn = true
+  
+
+
+}
 
 </script>
 
@@ -36,7 +51,7 @@
       </ul>
     </v-card-text>
     <v-card-actions>
-      <v-btn>Bearbeiten</v-btn>
+      <v-btn v-show="formOn" @click="editList">Bearbeiten</v-btn>
       <v-btn @click="deleteList">Löschen</v-btn>
     </v-card-actions>
   </v-card>
