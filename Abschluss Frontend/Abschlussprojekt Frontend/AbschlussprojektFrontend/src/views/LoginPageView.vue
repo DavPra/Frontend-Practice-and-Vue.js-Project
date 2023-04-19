@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { useTokenStore } from '@/store/tokenStore';
+import { RouterLink, useLink } from 'vue-router';
 
 const email = ref('')
 const password = ref('')
@@ -11,19 +12,28 @@ const submitForm = async () => {
   const userData = { email: email.value, password: password.value }
   try {
     const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/auth/login', userData)
-    console.log(response.data.accessToken)} 
+    //console.log(response.data.accessToken)
+    const token = response.data.accessToken
+    console.log(token) 
+    //useLink('./skip')
+  } 
+
+
 
   catch (err) {
     if (err.isAxiosError && err.response.status === 400) {
       alert('Ihre E-Mail Adresse hat kein korrektes Format oder ihr Passwort ist kürzer als 8 Zeichen.')
     }
-    else if (err.isAxiosError && err.response.status === 409) {
+    else if (err.isAxiosError && err.response.status === 401) {
       alert('E-Mail Adresse oder Passwort sind nicht korrekt. Bitte überprüfen sie ihre Eingaben.')
     }
-    console.error(error)
-     
+     else if (response.status === 200) {
+    
+     }
   }
 }
+
+
 </script>
 
 

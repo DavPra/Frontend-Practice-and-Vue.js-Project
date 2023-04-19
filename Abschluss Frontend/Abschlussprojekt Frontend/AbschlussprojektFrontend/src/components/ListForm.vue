@@ -13,13 +13,18 @@ const description = ref('');
 
 
 function addTask() {
+  const config  = {
+    Headers:{
+      'Authentication': 'Bearer '
+    }
+  }
   const data = {
     
     label: selectedType.value + ' ' + listNumber.value + ': ' + title.value,
     description: description.value,
   };
 
-  axios.post('https://codersbay.a-scho-wurscht.at/api/task', data)
+  axios.post('https://codersbay.a-scho-wurscht.at/api/task', data, config)
     .then(response => {
       console.log('Task created:', response.data);
       closeForm();
