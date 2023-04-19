@@ -54,6 +54,8 @@ const submitForm = async () => {
 
 
 <template>
+  <div class="bg-teal-lighten-4">
+  <h1 align="center" style="margin-top: 100px;">Bitte geben Sie ihre Daten an um einen Account zu erstellen.</h1> <br/>
   <v-container class="d-flex justify-center align-center">
     <v-form @submit.prevent="submitForm">
       <v-container>
@@ -67,7 +69,7 @@ const submitForm = async () => {
           </v-col>
 
           <v-col cols="12" md="4">
-            <v-text-field v-model="email" label="E-mail" required></v-text-field>
+            <v-text-field v-model="email" label="E-mail Adresse" required></v-text-field>
           </v-col>
 
           <v-col cols="12" md="4">
@@ -97,4 +99,6 @@ const submitForm = async () => {
       </v-container>
     </v-form>
   </v-container>
+</div>
 </template>
+
