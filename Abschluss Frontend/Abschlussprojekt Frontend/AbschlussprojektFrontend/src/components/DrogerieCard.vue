@@ -1,7 +1,7 @@
 <script setup>
 import { useItemStore } from '@/store/ItemStore';
 import { ref } from 'vue';
-
+import { useTokenStore } from '@/store/tokenStore';
 import axios from 'axios';
 
   const ItemStore = useItemStore();

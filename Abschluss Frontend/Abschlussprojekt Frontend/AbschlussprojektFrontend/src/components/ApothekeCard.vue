@@ -1,15 +1,19 @@
 <script setup>
   import { useItemStore } from '@/store/ItemStore';
+  import { useTokenStore } from '@/store/tokenStore';
   import { ref } from 'vue';
   import axios from 'axios';
 
   const ItemStore = useItemStore();
   const currentDate = ref(new Date().toLocaleDateString())
+  const config = ref('')
+  const authToken = localStorage.getItem
 
   function deleteList () {
+    config = authToken
     const confirmed = confirm('Möchten Sie die Liste wirklich löschen?');
     if (confirmed) {
-      axios.delete(`https://codersbay.a-scho-wurscht.at/api/tasklist/${ItemStore.taskID}`)
+      axios.delete(`https://codersbay.a-scho-wurscht.at/api/tasklist/${ItemStore.taskID}`, config)
         .then(response => {
           if (response.status === 204) {
             alert('Die Liste wurde erfolgreich gelöscht.');
