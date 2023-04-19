@@ -11,7 +11,7 @@ const currentDate = ref(new Date().toLocaleDateString())
 
 
 <template>
-    <v-card outlined :variant="'tonal'" style="margin:20px" color="pink-lighten-2">
+    <v-card outlined :variant="'tonal'" style="margin:20px" color="pink-darken-2">
       <v-card-title>
         <span class="headline font-weight-bold">Einkaufsliste Drogerie</span> <br>
         <span class="caption">{{ currentDate }}</span>

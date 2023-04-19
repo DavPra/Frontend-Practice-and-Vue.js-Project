@@ -40,7 +40,7 @@
 </script>
 
 <template>
-  <v-card outlined :variant="'tonal'" style="margin:20px; max-width:auto;" color="green-lighten-1">
+  <v-card outlined :variant="'tonal'" style="margin:20px; max-width:auto;" color="green-darken-1">
     <v-card-title>
       <span class="headline font-weight-bold">Einkaufsliste Apotheke</span> <br>
       <span class="caption">{{ currentDate }}</span>
