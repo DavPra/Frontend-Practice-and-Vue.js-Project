@@ -54,84 +54,47 @@ const submitForm = async () => {
 
 
 <template>
+  <v-container class="d-flex justify-center align-center">
     <v-form @submit.prevent="submitForm">
-        <v-container>
-          <v-row>
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
-                v-model="firstName" 
-                label="Vorname"
-                required
-              ></v-text-field>
-            </v-col>
-    
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
-                v-model="lastName"
-                label="Nachname"
-                required
-              ></v-text-field>
-            </v-col>
-    
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
-                v-model="email"
-                label="E-mail"
-                required
-              ></v-text-field>
-            </v-col>
-
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
-                v-model="password"
-                label="Passwort mindestens 8 Zeichen"
-                required
-              ></v-text-field>
-            </v-col>
-
-            <v-col
-            cols="12"
-            md="4"
-          >
-            <v-text-field
-              v-model="username"
-              label="Username"
-              required
-            ></v-text-field>
+      <v-container>
+        <v-row align="center" justify="center">
+          <v-col cols="12" md="4">
+            <v-text-field v-model="firstName" label="Vorname" required></v-text-field>
           </v-col>
 
-          <v-col
-            cols="12"
-            md="4">
+          <v-col cols="12" md="4">
+            <v-text-field v-model="lastName" label="Nachname" required></v-text-field>
+          </v-col>
+
+          <v-col cols="12" md="4">
+            <v-text-field v-model="email" label="E-mail" required></v-text-field>
+          </v-col>
+
+          <v-col cols="12" md="4">
+            <v-text-field v-model="password" label="Passwort mindestens 8 Zeichen" required></v-text-field>
+          </v-col>
+
+          <v-col cols="12" md="4">
+            <v-text-field v-model="username" label="Username" required></v-text-field>
+          </v-col>
+
+          <v-col cols="12" md="4">
             <v-checkbox
-        v-model="termsOfUseAccepted"
-        :rules="[v => !!v || 'Sie müssen den AGB zustimmen um fortzufahren!']"
-        label="Ich akzeptiere die AGB."
-        required
-      ></v-checkbox>
+              v-model="termsOfUseAccepted"
+              :rules="[v => !!v || 'Sie müssen den AGB zustimmen um fortzufahren!']"
+              label="Ich akzeptiere die AGB."
+              required
+            ></v-checkbox>
           </v-col>
-        
+
           <v-btn type="submit" block class="mt-2">Registrieren</v-btn>
 
           <v-btn block class="mt-2">
             <router-link to="/login">Login</router-link>
-        </v-btn>
+          </v-btn>
 
-          </v-row>
-        </v-container>
-      </v-form>
-
-
+        </v-row>
+      </v-container>
+    </v-form>
+  </v-container>
 </template>

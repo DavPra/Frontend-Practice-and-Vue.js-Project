@@ -8,7 +8,7 @@ import NewListButtonDR from '@/components/NewListButtonDR.vue';
 import NewListButtonSM from '@/components/NewListButtonSM.vue';
 
 import { ref } from 'vue';
-//import axios from 'axios';
+
 
 const numberOfSMCards = ref(0);
 const numberOfDRCards = ref(0);
@@ -26,8 +26,6 @@ function addAPCard() {
   numberOfAPCards.value++;
 }
 
-
-//axios.get("https://codersbay.a-scho-wurscht.at/api/auth")
 
 </script>
 
