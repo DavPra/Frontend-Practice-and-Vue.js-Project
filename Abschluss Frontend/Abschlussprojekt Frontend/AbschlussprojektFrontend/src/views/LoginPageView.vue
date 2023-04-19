@@ -17,7 +17,7 @@ const submitForm = async () => {
     const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/auth/login', userData)
     const token = response.data.accessToken
     console.log(token) 
-   
+    //router.push({'/skip'})
   } 
 
 
