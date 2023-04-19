@@ -9,6 +9,10 @@ export const useTokenStore = defineStore('token', {
     saveToken(token) {
       localStorage.setItem('access_token', token);
       this.token = token;
+    },
+    getToken(token) {
+      localStorage.getItem('access_token', token)
+      this.token = token
     }
   }
 })

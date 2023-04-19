@@ -8,6 +8,8 @@ import NewListButtonDR from '@/components/NewListButtonDR.vue';
 import NewListButtonSM from '@/components/NewListButtonSM.vue';
 
 import { ref } from 'vue';
+import { onBeforeMount } from 'vue';
+
 
 
 const numberOfSMCards = ref(0);
