@@ -28,7 +28,8 @@ const submitForm = async () => {
   try {
     const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/auth/register', userData)
     console.log(response.data.accessToken)
-   
+    localStorage.setItem('accessToken', response.data.accessToken)
+    tokenStore.setToken(response.data.accessToken)
   
     email.value = ''
     firstName.value = ''

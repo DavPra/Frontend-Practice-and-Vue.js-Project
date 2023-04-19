@@ -1,6 +1,7 @@
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
+import { useTokenStore } from '@/store/tokenStore';
 
 const email = ref('')
 const password = ref('')
