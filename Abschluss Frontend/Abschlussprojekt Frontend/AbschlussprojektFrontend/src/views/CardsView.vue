@@ -1,5 +1,3 @@
-
-
 <script setup>
 import NewListButtonSM from "@/components/NewListButtonSM.vue";
 import NewListButtonDR from "@/components/NewListButtonDR.vue";
