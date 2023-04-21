@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 import { defineEmits } from 'vue';
 import axios from 'axios';
-import { useTokenStore } from '@/store/tokenStore';
-import { useTaskListStore } from '@/store/taskListStore';
+import { useTokenSStore } from '@/store/tokenStore';
+import { useTaskListStore } from '@/store/taskList';
 
 const emit = defineEmits(['closeForm']);
 const selectedType = ref('');
