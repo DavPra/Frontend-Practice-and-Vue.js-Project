@@ -11,13 +11,15 @@ const error = ref('');
 const loading = ref(false);
 const tokenStore = useTokenStore();
 
-const loginData = {
+
+async function login() {
+  loading.value = true;
+  
+  const loginData = {
   email: email.value,
   password: password.value,
 }
 
-async function login() {
-  loading.value = true;
   try {
     const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/auth/login', loginData );
     console.log(email.value)
