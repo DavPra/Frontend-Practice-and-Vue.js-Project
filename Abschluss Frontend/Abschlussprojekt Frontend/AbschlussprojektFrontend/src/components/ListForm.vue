@@ -2,14 +2,14 @@
 import { ref } from 'vue';
 import { defineEmits } from 'vue';
 import axios from 'axios';
-//import { useTokenStore } from '@/store/tokenStore';
+import { useTokenStore } from '@/store/tokenStore';
 
 const emit = defineEmits(['closeForm']);
 const selectedType = ref('');
 const listNumber = ref('');
 const title = ref('');
 const description = ref('');
-//const accessToken = 
+const accessToken = ref('')
 
 
 function addTask() {

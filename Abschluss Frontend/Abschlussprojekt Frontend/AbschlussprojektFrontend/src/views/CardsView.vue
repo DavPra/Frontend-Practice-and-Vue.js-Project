@@ -1,15 +1,4 @@
-<template>
-  <div class="d-flex justify-center mt-5">
-    <NewListButtonSM @list-created="showSupermarktCard" />
-    <div class="mx-5"></div>
-    <NewListButtonDR @list-created="showDrogerieCard" />
-    <div class="mx-5"></div>
-    <NewListButtonAP @list-created="showApothekeCard" />
-  </div>
-  <SupermarktCard v-if="showSupermarkt" :list="newList" />
-  <DrogerieCard v-if="showDrogerie" :list="newList" />
-  <ApothekeCard v-if="showApotheke" :list="newList" />
-</template>
+
 
 <script setup>
 import NewListButtonSM from "@/components/NewListButtonSM.vue";
@@ -45,3 +34,18 @@ const showApothekeCard = (list) => {
   newList = list;
 };
 </script>
+
+
+
+<template>
+  <div class="d-flex justify-center mt-5">
+    <NewListButtonSM @list-created="showSupermarktCard" />
+    <div class="mx-5"></div>
+    <NewListButtonDR @list-created="showDrogerieCard" />
+    <div class="mx-5"></div>
+    <NewListButtonAP @list-created="showApothekeCard" />
+  </div>
+  <SupermarktCard v-if="showSupermarkt" :list="newList" />
+  <DrogerieCard v-if="showDrogerie" :list="newList" />
+  <ApothekeCard v-if="showApotheke" :list="newList" />
+</template>
