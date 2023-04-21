@@ -2,6 +2,9 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { tokenStore } from '@/store/tokenStore';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 const firstName = ref('')
 const lastName = ref('')
@@ -12,7 +15,7 @@ const termsOfUseAccepted = ref(false)
 
 const submitForm = async () => {
   if (!termsOfUseAccepted.value) {
-    alert('Bitte akzeptieren Sie die AGB um fortzufahren.')
+    alert('Please accept the terms of use to continue.')
     return
   }
   const userData = {
@@ -28,7 +31,11 @@ const submitForm = async () => {
     console.log(response.data.accessToken)
     localStorage.setItem('accessToken', response.data.accessToken)
     tokenStore.setToken(response.data.accessToken)
-  
+
+    if (response.data.accessToken) {
+      router.push('/skip')
+    }
+
     email.value = ''
     firstName.value = ''
     lastName.value = ''
@@ -37,10 +44,10 @@ const submitForm = async () => {
     termsOfUseAccepted.value = false
   } catch (err) {
     if (err.isAxiosError && err.response.status === 400) {
-      alert('Ihre Eingaben entsprechen nicht den Eingabekriterien.')
+      alert('Your inputs do not match the input criteria.')
     }
     else if (err.isAxiosError && err.response.status === 409) {
-      alert('Für dies Mailadresse existiert bereits ein Account. Bitte verwenden Sie eine andere.')
+      alert('An account already exists for this email address. Please use another.')
     }
   }
 }
@@ -48,59 +55,23 @@ const submitForm = async () => {
 
 
 
-
-
-
 <template>
-  <v-container fluid>
-    <v-row align="center" justify="center">
-      <v-col cols="12" md="6">
-        <v-card>
-          <v-card-title align="center" class="mb-4">Bitte geben Sie ihre Daten an um einen Account zu erstellen.</v-card-title>
-          <v-form @submit.prevent="submitForm">
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="6">
-                  <v-text-field v-model="firstName" label="Vorname" required></v-text-field>
-                </v-col>
-
-                <v-col cols="12" md="6">
-                  <v-text-field v-model="lastName" label="Nachname" required></v-text-field>
-                </v-col>
-
-                <v-col cols="12">
-                  <v-text-field v-model="email" label="E-mail Adresse" required></v-text-field>
-                </v-col>
-
-                <v-col cols="12">
-                  <v-text-field v-model="password" label="Passwort mindestens 8 Zeichen" type="password" required></v-text-field>
-                </v-col>
-
-                <v-col cols="12">
-                  <v-text-field v-model="username" label="Username" required></v-text-field>
-                </v-col>
-
-                <v-col cols="12">
-                  <v-checkbox
-                    v-model="termsOfUseAccepted"
-                    :rules="[v => !!v || 'Sie müssen den AGB zustimmen um fortzufahren!']"
-                    label="Ich akzeptiere die AGB."
-                    required
-                  ></v-checkbox>
-                </v-col>
-              </v-row>
-            </v-container>
-
-            <v-card-actions class="d-flex justify-center">
-              <v-btn type="submit" class="mr-4" :disabled="!termsOfUseAccepted">Registrieren</v-btn>
-
-              <router-link to="/login">
-                <v-btn>Einloggen</v-btn>
-              </router-link>
-            </v-card-actions>
-          </v-form>
-        </v-card>
-      </v-col>
-    </v-row>
+  <v-container>
+    <v-card>
+      <v-card-title>Register</v-card-title>
+      <v-card-text>
+        <v-form @submit.prevent="submitForm">
+          <v-text-field v-model="firstName" label="First Name"></v-text-field>
+          <v-text-field v-model="lastName" label="Last Name"></v-text-field>
+          <v-text-field v-model="email" label="Email"></v-text-field>
+          <v-text-field v-model="username" label="Username"></v-text-field>
+          <v-text-field v-model="password" label="Password" type="password"></v-text-field>
+          <v-checkbox v-model="termsOfUseAccepted" label="I accept the terms of use"></v-checkbox>
+          <v-btn color="primary" type="submit">Register</v-btn>
+        </v-form>
+      </v-card-text>
+    </v-card>
   </v-container>
 </template>
+
+

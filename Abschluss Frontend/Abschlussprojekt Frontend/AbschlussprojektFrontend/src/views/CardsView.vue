@@ -1,77 +1,47 @@
-<script setup>
-import ApothekeCard from '@/components/ApothekeCard.vue';
-import DrogerieCard from '@/components/DrogerieCard.vue';
-import SupermarktCard from '@/components/SupermarktCard.vue';
-
-import NewListButtonAP from '@/components/NewListButtonAP.vue';
-import NewListButtonDR from '@/components/NewListButtonDR.vue';
-import NewListButtonSM from '@/components/NewListButtonSM.vue';
-
-import { ref } from 'vue';
-
-const numberOfSMCards = ref(0);
-const numberOfDRCards = ref(0);
-const numberOfAPCards = ref(0);
-
-function addSMCard() {
-  numberOfSMCards.value++;
-}
-
-function addDRCards() {
-  numberOfDRCards.value++;
-}
-
-function addAPCard() {
-  numberOfAPCards.value++;
-}
-
-</script>
-
-
-
-
 <template>
-  <v-container>
-    <div class="card-container">
-      <v-card v-for="i in numberOfSMCards" :key="i" class="pa-4 ma-4" >
-        <SupermarktCard/>
-      </v-card>
-      <NewListButtonSM @newListSM="addSMCard" />
-    </div>
-    <div class="card-container">
-      <v-card v-for="i in numberOfDRCards" :key="i" class="pa-4 ma-4" >
-        <DrogerieCard/>
-      </v-card>
-      <NewListButtonDR @newListDR="addDRCards" />
-    </div>
-    <div class="card-container">
-      <v-card v-for="i in numberOfAPCards" :key="i" class="pa-4 ma-4" >
-        <ApothekeCard/>
-      </v-card>
-      <NewListButtonAP @newListAP="addAPCard" />
-    </div>
-  </v-container>
+  <div class="d-flex justify-center mt-5">
+    <NewListButtonSM @list-created="showSupermarktCard" />
+    <div class="mx-5"></div>
+    <NewListButtonDR @list-created="showDrogerieCard" />
+    <div class="mx-5"></div>
+    <NewListButtonAP @list-created="showApothekeCard" />
+  </div>
+  <SupermarktCard v-if="showSupermarkt" :list="newList" />
+  <DrogerieCard v-if="showDrogerie" :list="newList" />
+  <ApothekeCard v-if="showApotheke" :list="newList" />
 </template>
 
+<script setup>
+import NewListButtonSM from "@/components/NewListButtonSM.vue";
+import NewListButtonDR from "@/components/NewListButtonDR.vue";
+import NewListButtonAP from "@/components/NewListButtonAP.vue";
+import SupermarktCard from "@/components/SupermarktCard.vue";
+import DrogerieCard from "@/components/DrogerieCard.vue";
+import ApothekeCard from "@/components/ApothekeCard.vue";
 
+let showSupermarkt = false;
+let showDrogerie = false;
+let showApotheke = false;
+let newList = null;
 
-<style scoped>
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+const showSupermarktCard = (list) => {
+  showSupermarkt = true;
+  showDrogerie = false;
+  showApotheke = false;
+  newList = list;
+};
 
-.v-card {
-  width: 400px;
-  margin: 10px;
-}
+const showDrogerieCard = (list) => {
+  showSupermarkt = false;
+  showDrogerie = true;
+  showApotheke = false;
+  newList = list;
+};
 
-@media (max-width: 599px) {
-  .v-card {
-    width: 100%;
-    margin: 10px 0;
-  }
-}
-
-</style>
+const showApothekeCard = (list) => {
+  showSupermarkt = false;
+  showDrogerie = false;
+  showApotheke = true;
+  newList = list;
+};
+</script>
