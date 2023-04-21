@@ -1,7 +1,7 @@
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
-import { tokenStore } from '@/store/tokenStore';
+import { useTokenStore } from '@/store/tokenStore';
 import { useRouter } from 'vue-router';
 
 const router = useRouter()

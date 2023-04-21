@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios';
-import { useTaskListStore } from '@/store';
+import { useTaskListStore } from '@/store/taskList';
 
 const taskListStore = useTaskListStore();
 

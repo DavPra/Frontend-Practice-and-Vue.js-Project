@@ -1,8 +1,8 @@
 <script setup>
 import axios from 'axios'
-import { useTasklistStore } from '@/store/tasklist'
+import {useTaskListStore} from '@/store/taskList'
 
-const tasklistStore = useTasklistStore()
+const tasklistStore = useTaskListStore()
 
 const dialog = ref(false)
 const label = ref('')

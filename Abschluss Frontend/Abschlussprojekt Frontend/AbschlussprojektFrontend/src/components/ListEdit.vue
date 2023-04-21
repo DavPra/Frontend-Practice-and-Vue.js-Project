@@ -1,7 +1,7 @@
 <script setup>
   import { ref } from 'vue';
   import axios from 'axios';
-  import { useTaskListStore } from '@/store/TaskListStore';
+  import { useTaskListStore } from '@/store/taskList';
   
   const taskListStore = useTaskListStore();
   const title = ref('');
@@ -20,7 +20,7 @@
   }
   </script>
 
-  
+
 <template>
     <v-form>
       <v-text-field v-model="title" label="Title" required></v-text-field>

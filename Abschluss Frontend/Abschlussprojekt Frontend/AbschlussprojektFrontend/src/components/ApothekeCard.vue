@@ -1,19 +1,20 @@
 <script setup>
-  import { useTaskListStore } from '@/store/TaskListStore';
+  import { useTaskListStore } from '@/store/taskList'
   import { ref } from 'vue';
   import axios from 'axios';
-  import ListEdit from '@/components/ListEdit.vue'
+  import ListEdit from '@/components/ListEdit.vue';
+  import { useTokenStore } from '@/store/tokenStore';
 
   const taskListStore = useTaskListStore();
-  const currentDate = ref(new Date().toLocaleDateString())
-  const config = ref('')
-  const authToken = localStorage.getItem
+  const currentDate = ref(new Date().toLocaleDateString());
+  const config = ref({});
+  const tokenStore = useTokenStore()
 
-  function deleteList () {
-    config = authToken
+  function deleteList() {
+    config.value.headers = { 'Authorization': `Bearer ${tokenStore.getToken}` };
     const confirmed = confirm('Möchten Sie die Liste wirklich löschen?');
     if (confirmed) {
-      axios.delete(`https://codersbay.a-scho-wurscht.at/api/tasklist/${taskListStore.taskListId}`, config)
+      axios.delete(`https://codersbay.a-scho-wurscht.at/api/tasklist/${taskListStore.taskListId}`, config.value)
         .then(response => {
           if (response.status === 204) {
             alert('Die Liste wurde erfolgreich gelöscht.');
@@ -21,23 +22,20 @@
           }
         })
         .catch(error => {
-          if(response.status === 401) {
-            alert('Bitte loggen Sie sich ein um die Listen zu bearbeiten.')
-          }
-          else if (response.status === 403) {
-            alert('Das ist nicht ihre Einkaufsliste.')
+          if (response.status === 401) {
+            alert('Bitte loggen Sie sich ein um die Listen zu bearbeiten.');
+          } else if (response.status === 403) {
+            alert('Das ist nicht ihre Einkaufsliste.');
           }
           console.error('Error deleting list:', error);
         });
     }
   }
-  
-  function editList() {
-  formOn = true;
-  const listEditComponent = createApp(ListEdit);
-  listEditComponent.mount(document.body.appendChild(document.createElement("div")));
-}
 
+  function editList() {
+    const listEditComponent = createApp(ListEdit);
+    listEditComponent.mount(document.body.appendChild(document.createElement('div')));
+  }
 </script>
 
 <template>
@@ -52,7 +50,7 @@
       </ul>
     </v-card-text>
     <v-card-actions>
-      <v-btn v-show="formOn" @click="editList">Bearbeiten</v-btn>
+      <v-btn @click="editList">Bearbeiten</v-btn>
       <v-btn @click="deleteList">Löschen</v-btn>
     </v-card-actions>
   </v-card>

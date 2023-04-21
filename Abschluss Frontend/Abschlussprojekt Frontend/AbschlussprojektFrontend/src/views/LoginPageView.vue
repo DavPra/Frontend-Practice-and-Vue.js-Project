@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import axios from 'axios';
-import { tokenStore } from '@/store/tokenStore';
+import { useTokenStore } from '@/store/tokenStore';
 import { ref } from 'vue';
 
 const router = useRouter();
@@ -15,8 +15,8 @@ async function login() {
   try {
     const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/auth/login', { email: email.value, password: password.value });
     setToken(response.data.accessToken);
-    tokenStore.setToken(response.data.accessToken);
-    console.log(tokenStore.getToken())
+    useTokenStore.setToken(response.data.accessToken);
+    console.log(response.data)
 
     if (response.data.accessToken) {
       router.push('/skip');

@@ -3,7 +3,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
-import { useTaskListStore } from '@/stores/taskListStore';
+import { useTaskListStore } from '@/store/taskList';
 
 const store = useTaskListStore();
 
