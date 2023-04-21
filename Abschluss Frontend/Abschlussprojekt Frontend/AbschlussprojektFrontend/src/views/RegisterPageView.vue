@@ -6,6 +6,8 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter()
 
+const tokenStore = useTokenStore()
+
 const firstName = ref('')
 const lastName = ref('')
 const email = ref('')
@@ -31,7 +33,7 @@ const submitForm = async () => {
     console.log(response.data.accessToken)
     localStorage.setItem('accessToken', response.data.accessToken)
     tokenStore.setToken(response.data.accessToken)
-
+    console.log(password.value)
     if (response.data.accessToken) {
       router.push('/skip')
     }

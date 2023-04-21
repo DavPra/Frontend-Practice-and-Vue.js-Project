@@ -9,14 +9,22 @@ const email = ref('');
 const password = ref('');
 const error = ref('');
 const loading = ref(false);
+const tokenStore = useTokenStore();
+
+const loginData = {
+  email: email.value,
+  password: password.value,
+}
 
 async function login() {
   loading.value = true;
   try {
-    const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/auth/login', { email: email.value, password: password.value });
-    setToken(response.data.accessToken);
-    useTokenStore.setToken(response.data.accessToken);
-    console.log(response.data)
+    const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/auth/login', loginData );
+    console.log(email.value)
+    console.log(password.value)
+    localStorage.setItem('accessToken', response.data.accessToken)
+    tokenStore.setToken(response.data.accessToken)
+    console.log(response.data);
 
     if (response.data.accessToken) {
       router.push('/skip');

@@ -1,40 +1,42 @@
 
-
 <script setup>
-import { ref } from 'vue';
-import axios from 'axios';
-import { useTaskListStore } from '@/store/taskList';
+import axios from "axios";
+import { useTaskListStore } from "@/store/taskList";
+import { ref, getCurrentInstance } from "vue";
+const instance = getCurrentInstance();
 
 const store = useTaskListStore();
 
 const dialog = ref(false);
 const valid = ref(false);
-const label = ref('');
-const description = ref('');
+const label = ref("");
+const description = ref("");
 const snackbar = ref(false);
 
 const rules = {
-  required: (value) => !!value || 'Dieses Feld ist erforderlich',
+  required: (value) => !!value || "Dieses Feld ist erforderlich",
 };
 
 function close() {
   dialog.value = false;
-  label.value = '';
-  description.value = '';
+  label.value = "";
+  description.value = "";
   valid.value = false;
 }
 
 function createList() {
-  if (this.$refs.form.validate()) {
-    const token = localStorage.getItem('accessToken');
+  if (instance.proxy.$refs.form.validate()) {
+    const token = localStorage.getItem("accessToken");
     const headers = { Authorization: `Bearer ${token}` };
     const data = { label: label.value, description: description.value };
     axios
-      .post('https://codersbay.a-scho-wurscht.at/api/tasklist', data, { headers })
+      .post("https://codersbay.a-scho-wurscht.at/api/tasklist", data, {
+        headers,
+      })
       .then((response) => {
         console.log(response);
         store.setTaskListId(response.data.id);
-        $emit('created');
+        $emit("created");
         dialog.value = false;
       })
       .catch((error) => {
@@ -47,10 +49,6 @@ function createList() {
   }
 }
 </script>
-
-
-
-
 <template>
   <div>
     <v-dialog v-model="dialog" max-width="500">
@@ -59,13 +57,18 @@ function createList() {
         <v-card-text>
           <v-form ref="form" v-model="valid">
             <v-text-field v-model="label" label="Label" required></v-text-field>
-            <v-text-field v-model="description" label="Beschreibung"></v-text-field>
+            <v-text-field
+              v-model="description"
+              label="Beschreibung"
+            ></v-text-field>
           </v-form>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="close">Abbrechen</v-btn>
-          <v-btn color="blue darken-1" text @click="createList">Erstellen</v-btn>
+          <v-btn color="blue darken-1" text @click="createList"
+            >Erstellen</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
