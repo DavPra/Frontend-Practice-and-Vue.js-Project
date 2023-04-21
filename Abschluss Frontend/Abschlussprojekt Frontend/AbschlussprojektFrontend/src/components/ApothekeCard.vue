@@ -1,9 +1,10 @@
 <script setup>
-  import { useItemStore } from '@/store/ItemStore';
+  import { useTaskListStore } from '@/store/TaskListStore';
   import { ref } from 'vue';
   import axios from 'axios';
+  import ListEdit from '@/components/ListEdit.vue'
 
-  const ItemStore = useItemStore();
+  const taskListStore = useTaskListStore();
   const currentDate = ref(new Date().toLocaleDateString())
   const config = ref('')
   const authToken = localStorage.getItem
@@ -12,11 +13,11 @@
     config = authToken
     const confirmed = confirm('Möchten Sie die Liste wirklich löschen?');
     if (confirmed) {
-      axios.delete(`https://codersbay.a-scho-wurscht.at/api/tasklist/${ItemStore.taskID}`, config)
+      axios.delete(`https://codersbay.a-scho-wurscht.at/api/tasklist/${taskListStore.taskListId}`, config)
         .then(response => {
           if (response.status === 204) {
             alert('Die Liste wurde erfolgreich gelöscht.');
-            ItemStore.removeItemList(ItemStore.taskID);
+            taskListStore.clearTaskListId();
           }
         })
         .catch(error => {
@@ -30,14 +31,11 @@
         });
     }
   }
-  const formOn = false
-
-  function editList () {
-
-      formOn = true
   
-
-
+  function editList() {
+  formOn = true;
+  const listEditComponent = createApp(ListEdit);
+  listEditComponent.mount(document.body.appendChild(document.createElement("div")));
 }
 
 </script>
@@ -50,7 +48,7 @@
     </v-card-title>
     <v-card-text>
       <ul style="margin-top: 20px;">
-        <li v-for="item in ItemStore.getItemsByList(ItemStore.taskID)" :key="item.id">{{ item.name }}</li>
+        <li v-for="item in ItemStore.getItemsByList(taskListStore.taskListId)" :key="item.id">{{ item.name }}</li>
       </ul>
     </v-card-text>
     <v-card-actions>
