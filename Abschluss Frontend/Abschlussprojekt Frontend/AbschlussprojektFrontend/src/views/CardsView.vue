@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, onUnmounted } from "vue";
 import NewListButtonSM from "@/components/NewListButtonSM.vue";
 import NewListButtonDR from "@/components/NewListButtonDR.vue";
 import NewListButtonAP from "@/components/NewListButtonAP.vue";
@@ -6,10 +7,17 @@ import SupermarktCard from "@/components/SupermarktCard.vue";
 import DrogerieCard from "@/components/DrogerieCard.vue";
 import ApothekeCard from "@/components/ApothekeCard.vue";
 
-let showSupermarkt = false;
-let showDrogerie = false;
-let showApotheke = false;
-let newList = null;
+const showSupermarkt = false;
+const showDrogerie = false;
+const showApotheke = false;
+const newList = null;
+
+const $on = (event, callback) => {
+  window.addEventListener(event, callback);
+};
+const $off = (event, callback) => {
+  window.removeEventListener(event, callback);
+};
 
 const showSupermarktCard = (list) => {
   showSupermarkt = true;
@@ -31,19 +39,39 @@ const showApothekeCard = (list) => {
   showApotheke = true;
   newList = list;
 };
+
+const handleNewListSM = (listId) => {
+  showSupermarktCard(listId);
+};
+
+const handleDestroy = () => {
+  showSupermarkt = false;
+  showDrogerie = false;
+  showApotheke = false;
+  newList = null;
+};
+
+defineEmits(["NewListSM"]);
+
+onMounted(() => {
+  $on("NewListSM", handleNewListSM);
+});
+
+onUnmounted(() => {
+  $off("NewListSM", handleNewListSM);
+});
+
 </script>
-
-
 
 <template>
   <div class="d-flex justify-center mt-5">
-    <NewListButtonSM @list-created="showSupermarktCard" />
+    <NewListButtonSM  />
     <div class="mx-5"></div>
-    <NewListButtonDR @list-created="showDrogerieCard" />
+    <NewListButtonDR  />
     <div class="mx-5"></div>
-    <NewListButtonAP @list-created="showApothekeCard" />
+    <NewListButtonAP  />
   </div>
-  <SupermarktCard v-if="showSupermarkt" :list="newList" />
-  <DrogerieCard v-if="showDrogerie" :list="newList" />
-  <ApothekeCard v-if="showApotheke" :list="newList" />
+  <SupermarktCard v-if="showSupermarkt" :list="newList" @destroy="handleDestroy" />
+  <DrogerieCard v-if="showDrogerie" :list="newList" @destroy="handleDestroy" />
+  <ApothekeCard v-if="showApotheke" :list="newList" @destroy="handleDestroy" />
 </template>

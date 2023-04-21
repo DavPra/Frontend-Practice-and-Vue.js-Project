@@ -1,8 +1,7 @@
-NewListButtonSM
-
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
+import { defineEmits } from "vue";
 import { useTaskListStore } from "@/store/taskList";
 
 const taskListStore = useTaskListStore();
@@ -13,7 +12,7 @@ const description = ref("");
 const valid = ref(false);
 const errorMessage = ref("");
 
-const requiredRule = (value) => !!value || "Feld darf nicht leer sein";
+const emits = defineEmits(["NewListSM"]);
 
 async function createList() {
   const token = localStorage.getItem("accessToken");
@@ -43,9 +42,11 @@ async function createList() {
       description.value = "";
       errorMessage.value = "";
       valid.value = false;
+
+      emits("NewListSM", response.data.taskListId);
     }
-  } catch (error) {
-    if (error.response.status === 401) {
+  } catch (err) {
+    if (err.response.status === 401) {
       errorMessage.value =
         "Bitte loggen Sie sich ein um eine neue Liste zu erstellen.";
     } else {
@@ -55,6 +56,7 @@ async function createList() {
 }
 </script>
 
+
 <template>
   <div>
     <v-btn color="green darken-1" dark @click="dialog = true">
@@ -63,27 +65,16 @@ async function createList() {
     <v-dialog v-model="dialog" max-width="500px">
       <v-card>
         <v-card-title>
-          <span class="headline font-weight-bold"
-            >Neue Einkaufsliste erstellen</span
-          >
+          <span class="headline font-weight-bold">Neue Einkaufsliste erstellen</span>
         </v-card-title>
         <v-card-text>
           <v-form ref="form" v-model="valid">
-            <v-text-field
-              label="Label"
-              v-model="label"
-              required
-            ></v-text-field>
-            <v-text-field
-              label="Beschreibung"
-              v-model="description"
-            ></v-text-field>
+            <v-text-field label="Label" v-model="label" required></v-text-field>
+            <v-text-field label="Beschreibung" v-model="description"></v-text-field>
           </v-form>
           <v-row>
             <v-col>
-              <p v-if="errorMessage" class="error-message">
-                {{ errorMessage }}
-              </p>
+              <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
             </v-col>
           </v-row>
         </v-card-text>
@@ -95,3 +86,4 @@ async function createList() {
     </v-dialog>
   </div>
 </template>
+
