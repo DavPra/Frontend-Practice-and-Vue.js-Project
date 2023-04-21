@@ -8,9 +8,6 @@ import NewListButtonDR from '@/components/NewListButtonDR.vue';
 import NewListButtonSM from '@/components/NewListButtonSM.vue';
 
 import { ref } from 'vue';
-import { onBeforeMount } from 'vue';
-
-
 
 const numberOfSMCards = ref(0);
 const numberOfDRCards = ref(0);
@@ -28,45 +25,53 @@ function addAPCard() {
   numberOfAPCards.value++;
 }
 
-
 </script>
 
 
+
+
 <template>
+  <v-container>
     <div class="card-container">
-        
-        <v-container>
-          <div class="card" v-for="i in numberOfSMCards" :key="i">
-            <SupermarktCard/>
-          </div>
-          <NewListButtonSM @newListSM="addSMCard" />
-        </v-container>
-        <v-container class="pa-4">
-          <div v-for="i in numberOfDRCards" :key="i">
-            <DrogerieCard/>
-          </div>
-          <NewListButtonDR @newListDR="addDRCards" />
-        </v-container>
-        <v-container class="pa-4">
-          <div v-for="i in numberOfAPCards" :key="i">
-            <ApothekeCard/>
-          </div>
-          <NewListButtonAP @newListAP="addAPCard" />
-        </v-container>
-      </div>
-  </template>
+      <v-card v-for="i in numberOfSMCards" :key="i" class="pa-4 ma-4" >
+        <SupermarktCard/>
+      </v-card>
+      <NewListButtonSM @newListSM="addSMCard" />
+    </div>
+    <div class="card-container">
+      <v-card v-for="i in numberOfDRCards" :key="i" class="pa-4 ma-4" >
+        <DrogerieCard/>
+      </v-card>
+      <NewListButtonDR @newListDR="addDRCards" />
+    </div>
+    <div class="card-container">
+      <v-card v-for="i in numberOfAPCards" :key="i" class="pa-4 ma-4" >
+        <ApothekeCard/>
+      </v-card>
+      <NewListButtonAP @newListAP="addAPCard" />
+    </div>
+  </v-container>
+</template>
+
+
 
 <style scoped>
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-  .card {
-    width: 400px;
-    margin: 10px;
-  }
+.v-card {
+  width: 400px;
+  margin: 10px;
+}
 
+@media (max-width: 599px) {
+  .v-card {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
 
 </style>

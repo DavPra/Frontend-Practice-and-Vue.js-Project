@@ -11,10 +11,8 @@ import ListForm from './components/ListForm.vue';
 </script>
 
 <template>
-<div class="bg-teal-lighten-4">
-<RouterView/>
 
-</div>
+<RouterView/>
 
 
 </template>

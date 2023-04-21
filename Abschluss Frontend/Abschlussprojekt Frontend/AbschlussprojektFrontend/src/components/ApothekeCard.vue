@@ -1,6 +1,5 @@
 <script setup>
   import { useItemStore } from '@/store/ItemStore';
-  import { useTokenStore } from '@/store/tokenStore';
   import { ref } from 'vue';
   import axios from 'axios';
 
