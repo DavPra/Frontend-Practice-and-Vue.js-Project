@@ -29,7 +29,7 @@ async function login() {
     console.log(response.data);
 
     if (response.data.accessToken) {
-      router.push('/skip');
+      router.push('/list');
     }
 
     email.value = '';

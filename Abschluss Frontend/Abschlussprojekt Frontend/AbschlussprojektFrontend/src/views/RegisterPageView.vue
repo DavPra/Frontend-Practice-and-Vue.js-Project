@@ -35,7 +35,7 @@ const submitForm = async () => {
     tokenStore.setToken(response.data.accessToken)
     console.log(password.value)
     if (response.data.accessToken) {
-      router.push('/skip')
+      router.push('/list')
     }
 
     email.value = ''

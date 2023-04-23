@@ -5,6 +5,7 @@ import RegisterPageView from '@/views/RegisterPageView.vue'
 import LoginPageView from '@/views/LoginPageView.vue'
 import CardsView from '@/views/CardsView.vue'
 import APITestView from '@/views/APITestView'
+import ListView from '@/views/ListView'
 
 const routes = [
 { path: '/', component: StartPageView },
@@ -12,7 +13,8 @@ const routes = [
 { path: '/test' , component: TestView},
 { path: '/login', component: LoginPageView},
 { path: '/skip', component: CardsView},
-{ path: '/ApiTest', component: APITestView}
+{ path: '/ApiTest', component: APITestView},
+{path: '/list', component: ListView}
 ]
 
 const router = createRouter({
