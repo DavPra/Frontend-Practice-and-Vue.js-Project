@@ -1,76 +1,48 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useTaskListStore } from "@/store/taskList";
-import axios from "axios";
-import { onMounted } from "vue";
-import { useTokenStore } from "@/store/tokenStore";
 
-
-onMounted (() => {
-    user();
-});
-
-async function user() {
-  await tokenStore.userData();
-  console.log(tokenStore.userData);
-}
 
 const taskListStore = useTaskListStore();
-const taskList = ref([]);
 const title = ref('');
-const tokenStore = useTokenStore();
+
+onMounted (() => {
+    fetchListItems();
+});
 
 
 function fetchListItems() {
     taskListStore.fetchListItems();
-    console.log(taskList.value);
-    taskList.value = taskListStore.taskList;
-
+  
 }
 
 function submitTask() {
+  console.log(title.value);
+  localStorage.setItem('title', title.value);
     taskListStore.createTask();
 
+
 }
-
-
-
-async function userData2() {
-  const token = localStorage.getItem('accessToken');
-  const config = {
-    headers: {Authorization: 'Bearer'+ token}};
-
-    const userResponse= await axios.get('https://codersbay.a-scho-wurscht.at/api/auth/', config);
-    this.user = userResponse.data.user
-    console.log(this.user)}
-
 
 
 </script>
 
 <template>
-    <v-container>
-      <h1>Meine Einkaufsliste</h1>
-      <v-form @submit.prevent="submitTask">
-        <v-text-field v-model="title" label="Neuer Eintrag"></v-text-field>
-        <v-btn color="primary" type="submit">Speichern</v-btn>
-      </v-form>
-      <v-list>
-        <v-list-item
-            v-for="item in taskList"
-            :key="item.id"
-            @click="fetchListItems()"
-        >
-          <v-list-item-action>
-            <v-icon>mdi-delete</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ item.name }}</v-list-item-title>
-            <v-list-item-subtitle>{{ item.description }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-      <v-btn @click="fetchListItems()">Liste laden</v-btn>
-    </v-container>
-    <v-btn @click="userData2()">Liste laden</v-btn>
+  <v-container>
+    <h1>Meine Einkaufsliste</h1>
+    <v-form @submit.prevent="submitTask">
+      <v-text-field v-model="title" label="Neuer Eintrag"></v-text-field>
+      <v-btn color="primary" type="submit">Speichern</v-btn>
+    </v-form>
+    <v-list>
+      <v-list-item v-for="task in taskListStore.tasks" :key="task.Id">
+        <v-list-item-action>
+          <v-icon>mdi-delete</v-icon>
+        </v-list-item-action>
+        <v-list-item-title>{{ task.title }}</v-list-item-title>
+      </v-list-item>
+    </v-list>
+    <v-btn @click="fetchListItems()">Liste laden</v-btn>
+  </v-container>
 </template>
+

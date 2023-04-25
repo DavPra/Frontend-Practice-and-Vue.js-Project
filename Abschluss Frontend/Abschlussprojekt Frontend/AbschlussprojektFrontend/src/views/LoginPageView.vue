@@ -21,12 +21,15 @@ async function login(){
     await tokenStore.login(loginData.value)
     router.push('/list')
     console.log('login')
-    }catch(err) {
-      if (err.isAxiosError && err.response.status === 401) {
-        
-        return loginErr.value = true
-      }
-      console.error(err)
+    }
+    catch (err) {
+    if (err.response && err.response.status === 400) {
+      error.value = 'Es gibt Fehler in der Formatierung ihrer Eingabe bitte versuchen sie es erneut.';
+    } else if (err.response && err.response.status === 401) {
+     error.value = 'Ihre E-Mail Adresse oder ihr Passwort sind nicht korrekt.';
+    } else {
+     error.value = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.';
+    }
 
     }
 
