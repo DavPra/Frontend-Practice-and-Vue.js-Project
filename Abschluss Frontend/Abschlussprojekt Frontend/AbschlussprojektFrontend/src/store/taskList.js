@@ -20,6 +20,7 @@ export const useTaskListStore = defineStore({
     },
     async fetchListItems() {
       
+      const defaultTaskListID = localStorage.getItem('defaultTaskListID');
       const token = localStorage.getItem("accessToken");
       if (!token) {
          errorMessage.value =
@@ -32,7 +33,7 @@ export const useTaskListStore = defineStore({
     },
   };
   try {
-      const response = await axios.get(`https://codersbay.a-scho-wurscht.at/api/tasklist/${this.taskListId}`, config);
+      const response = await axios.get(`https://codersbay.a-scho-wurscht.at/api/tasklist/` + defaultTaskListID, config);
       if (response.status === 200) {
         this.listItems = response.data.tasks
         this.answer = response.data.tasks
@@ -46,6 +47,7 @@ export const useTaskListStore = defineStore({
     }
   },
   async createTask() {
+    const defaultTaskListID = localStorage.getItem('defaultTaskListID');
     const token = localStorage.getItem("accessToken");
     if (!token) {
        errorMessage.value =
@@ -69,6 +71,7 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
     }
   },
   async deleteTask() {
+    const defaultTaskListID = localStorage.getItem('defaultTaskListID');
     const token = localStorage.getItem("accessToken");
     if (!token) {
        errorMessage.value =

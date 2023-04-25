@@ -4,27 +4,34 @@ import { useTaskListStore } from "@/store/taskList";
 
 const taskListStore = useTaskListStore();
 const taskList = ref([]);
-const answers = ref(String);
+const title = ref("");
 
 function fetchListItems() {
     taskListStore.fetchListItems();
-    taskList.value = taskListStore.listItems;
     console.log(taskList.value);
-    answers.value = taskListStore.answer
+    taskList.value = taskListStore.taskList;
 
 }
+
+const submitTask = async () => {
+
+    
+};
 
 </script>
 
 <template>
     <v-container>
-      <h1>My List</h1>
+      <h1>Meine Einkaufsliste</h1>
+      <v-form @submit.prevent="submitTask">
+        <v-text-field v-model="title" label="Neuer Eintrag"></v-text-field>
+        <v-btn color="primary" type="submit">Speichern</v-btn>
+      </v-form>
       <v-list>
         <v-list-item
-          v-for="item in taskList"
-          :key="item.id"
-          :title="item.name"
-          :subtitle="item.description"
+            v-for="item in taskList"
+            :key="item.id"
+            @click="fetchListItems()"
         >
           <v-list-item-action>
             <v-icon>mdi-delete</v-icon>
@@ -35,8 +42,8 @@ function fetchListItems() {
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <v-btn @click="fetchListItems()">Liste laden</v-btn>
     </v-container>
 
-    <v-btn @click="fetchListItems()">Fetch List Items</v-btn>
-    <div>Liste ist: {{ answers.value }}</div>
+    
 </template>

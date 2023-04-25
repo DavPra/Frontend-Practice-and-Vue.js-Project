@@ -34,6 +34,8 @@ const submitForm = async () => {
     localStorage.setItem('accessToken', response.data.accessToken)
     tokenStore.setToken(response.data.accessToken)
     console.log(password.value)
+    localStorage.setItem('defaultListId', response.data.taskListId)
+    console.log(response.data.taskListId)
     if (response.data.accessToken) {
       router.push('/list')
     }
