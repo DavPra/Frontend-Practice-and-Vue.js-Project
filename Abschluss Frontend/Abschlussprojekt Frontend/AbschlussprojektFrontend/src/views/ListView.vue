@@ -1,10 +1,25 @@
 <script setup>
 import { ref } from "vue";
 import { useTaskListStore } from "@/store/taskList";
+import axios from "axios";
+import { onMounted } from "vue";
+import { useTokenStore } from "@/store/tokenStore";
+
+
+onMounted (() => {
+    user();
+});
+
+async function user() {
+  await tokenStore.userData();
+  console.log(tokenStore.userData);
+}
 
 const taskListStore = useTaskListStore();
 const taskList = ref([]);
-const title = ref("");
+const title = ref('');
+const tokenStore = useTokenStore();
+
 
 function fetchListItems() {
     taskListStore.fetchListItems();
@@ -13,10 +28,23 @@ function fetchListItems() {
 
 }
 
-const submitTask = async () => {
+function submitTask() {
+    taskListStore.createTask();
 
-    
-};
+}
+
+
+
+async function userData2() {
+  const token = localStorage.getItem('accessToken');
+  const config = {
+    headers: {Authorization: 'Bearer'+ token}};
+
+    const userResponse= await axios.get('https://codersbay.a-scho-wurscht.at/api/auth/', config);
+    this.user = userResponse.data.user
+    console.log(this.user)}
+
+
 
 </script>
 
@@ -44,6 +72,5 @@ const submitTask = async () => {
       </v-list>
       <v-btn @click="fetchListItems()">Liste laden</v-btn>
     </v-container>
-
-    
+    <v-btn @click="userData2()">Liste laden</v-btn>
 </template>

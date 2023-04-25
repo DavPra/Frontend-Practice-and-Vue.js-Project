@@ -5,7 +5,7 @@ import RegisterPageView from '@/views/RegisterPageView.vue'
 import LoginPageView from '@/views/LoginPageView.vue'
 import CardsView from '@/views/CardsView.vue'
 import APITestView from '@/views/APITestView'
-import ListView from '@/views/ListView'
+import ListView from '@/views/ListView.vue'
 
 const routes = [
 { path: '/', component: StartPageView },

@@ -1,24 +1,37 @@
 import { defineStore } from 'pinia'
+import axios from 'axios'
 
-export const useTokenStore = defineStore({
-  id: 'tokenStore',
+const token = localStorage.getItem('accessToken')
+
+export const useTokenStore = defineStore( 'tokenStore', {
   state: () => ({
-    token: localStorage.getItem('access_token') || null,
-    defaultTaskListID: localStorage.getItem('defaultTaskListID') || null,
+    token: null,
+    user: null,
   }),
-  getters: {
-    getToken: (state) => state.token,
-  },
   actions: {
-    setToken(token) {
-      this.token = token
-      localStorage.setItem('access_token', token)
-      this.defaultTaskListID = defaultTaskListID
-      localStorage.setItem('defaultTaskListID', defaultTaskListID)
-    },
-    deleteToken() {
-      this.token = null
-      localStorage.removeItem('access_token')
-    },
-  },
-})
+    
+    async login(loginData) {
+        const loginConfig = {
+          email: loginData.email,
+          password: loginData.password,
+  };
+  const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/auth/login', loginConfig);
+  this.token = response.data.accessToken;
+  window.localStorage.setItem('accessToken', this.token);
+},
+
+async userData() {
+  const config = {
+    headers: {Authorization: 'Bearer'+ token}};
+
+    const userResponse= await axios.get('https://codersbay.a-scho-wurscht.at/api/auth/', config);
+    this.user = userResponse.data.user
+    console.log(this.user)}
+
+
+  }}
+
+
+
+
+)

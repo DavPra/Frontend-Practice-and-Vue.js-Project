@@ -10,18 +10,18 @@ export const useTaskListStore = defineStore({
     taskId: localStorage.getItem('taskId') || '',
   }),
   actions: {
-    setTaskListId(taskListId) {
-      this.taskListId = taskListId;
-      localStorage.setItem('taskListId', taskListId);
-    },
-    clearTaskListId() {
-      this.taskListId = '';
-      localStorage.removeItem('taskListId');
-    },
+    //setTaskListId(taskListId) {
+      //this.taskListId = taskListId;
+      //localStorage.setItem('taskListId', taskListId);
+    //},
+    //clearTaskListId() {
+      //this.taskListId = '';
+      //localStorage.removeItem('taskListId');
+    //},
     async fetchListItems() {
       
-      const defaultTaskListID = localStorage.getItem('defaultTaskListID');
-      const token = localStorage.getItem("accessToken");
+      const token = localStorage.getItem('accessToken');
+      console.log(token.valueOf());
       if (!token) {
          errorMessage.value =
            "Bitte loggen Sie sich ein um eine neue Liste zu erstellen.";
@@ -31,9 +31,18 @@ export const useTaskListStore = defineStore({
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    body: {
+      "assignedUserId": 1475,
+      "description": "string",
+      "taskListId": 3373,
+      "status": "TODO",
+      "points": 0,
+      "estimation": 0,
+      "title": "Test"
+    }
   };
   try {
-      const response = await axios.get(`https://codersbay.a-scho-wurscht.at/api/tasklist/` + defaultTaskListID, config);
+      const response = await axios.get(`https://codersbay.a-scho-wurscht.at/api/tasklist/`, config);
       if (response.status === 200) {
         this.listItems = response.data.tasks
         this.answer = response.data.tasks
@@ -47,17 +56,27 @@ export const useTaskListStore = defineStore({
     }
   },
   async createTask() {
-    const defaultTaskListID = localStorage.getItem('defaultTaskListID');
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem('accessToken');
+    console.log(token.valueOf());
     if (!token) {
        errorMessage.value =
          "Bitte loggen Sie sich ein um eine neue Liste zu erstellen.";
         return;
     }
-const config = { headers: { Authorization: `Bearer ${token}` } };
+const config = { 
+  headers: { Authorization: `Bearer ${token}` },
+body: {
+  "assignedUserId": 1475,
+  "description": "string",
+  "taskListId": 3373,
+  "status": "TODO",
+  "points": 0,
+  "estimation": 0,
+  "title": "Test"+ Math.random(),
+ }};
 
   try {
-      const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/task', {title: ''}, config);
+      const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/task', config);
       if (response.status === 200) {
         this.answer = response.data
         console.log(response)

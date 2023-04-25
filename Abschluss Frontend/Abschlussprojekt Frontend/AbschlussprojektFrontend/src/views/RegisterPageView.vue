@@ -36,7 +36,7 @@ const submitForm = async () => {
     console.log(password.value)
     localStorage.setItem('defaultListId', response.data.taskListId)
     console.log(response.data.taskListId)
-    if (response.data.accessToken) {
+    if (response.status === 200) {
       router.push('/list')
     }
 
@@ -72,6 +72,7 @@ const submitForm = async () => {
           <v-text-field v-model="password" label="Password" type="password"></v-text-field>
           <v-checkbox v-model="termsOfUseAccepted" label="I accept the terms of use"></v-checkbox>
           <v-btn color="primary" type="submit">Register</v-btn>
+          <v-btn style="margin-left: 20px;" color="secondary" @click="router.push('/list')">Weiterleitung nach der Registrierung.</v-btn>
         </v-form>
       </v-card-text>
     </v-card>
