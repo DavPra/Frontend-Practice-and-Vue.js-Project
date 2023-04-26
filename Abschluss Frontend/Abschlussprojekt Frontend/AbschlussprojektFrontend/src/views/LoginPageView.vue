@@ -81,11 +81,8 @@ function register() {
           <v-text-field v-model="email" label="Email" type="email"></v-text-field>
           <v-text-field v-model="password" label="Password" type="password"></v-text-field>
           <v-alert v-if="error" type="error" dismissible>{{ error }}</v-alert>
-          <v-btn type="submit" color="primary" class="mr-4" :disabled="loading">
-            <span v-if="loading">
-              <v-progress-circular indeterminate size="24" color="white"></v-progress-circular>
-            </span>
-            <span v-else>Login</span>
+          <v-btn type="submit" color="primary" class="mr-4">
+            <span>Login</span>
           </v-btn>
           <v-btn @click="register" color="secondary">Register</v-btn>
         </v-form>
