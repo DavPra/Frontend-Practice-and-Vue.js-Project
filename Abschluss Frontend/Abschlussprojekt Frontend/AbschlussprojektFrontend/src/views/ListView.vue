@@ -41,7 +41,7 @@ async function submitTask() {
   try {
     const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/task', body, config);
     if (response.status === 201) {
-      this.answer = response.data;
+      taskListStore.fetchListItems();
       console.log(response);
       localStorage.setItem(title.value + 'ID', response.data.taskId);
       console.log(localStorage.getItem(title.value + 'ID'));
@@ -54,7 +54,7 @@ async function submitTask() {
 
 }
 
-async function deleteTask() {
+async function deleteTask(taskId) {
   const token = localStorage.getItem('accessToken');
   if (!token) {
      errorMessage.value =
@@ -64,11 +64,12 @@ async function deleteTask() {
   const config = { headers: { Authorization: `Bearer ${token}` } };
 
   try {
-    const response = await axios.delete('https://codersbay.a-scho-wurscht.at/api/task/' + deleteId.value, config);
+    const response = await axios.delete('https://codersbay.a-scho-wurscht.at/api/task/' + taskId, config);
     console.log(deleteId.value);
     if (response.status === 204) {
       alert('Eintrag gelöscht');
       //this.answer = response.data;
+      taskListStore.fetchListItems();
       console.log(response);
     } else if (response.status === 401) {
       console.error('Fehler beim Löschen der Aufgabe. Loggen Sie sich ein.');
@@ -90,12 +91,10 @@ async function deleteTask() {
       <v-list-item v-for="task in taskListStore.tasks" :key="task.Id">
         <v-list-item-title>{{ task.title }}</v-list-item-title>
         <v-list-subheader>{{ task.taskId }}</v-list-subheader>
+        <span style="cursor: pointer" @click="deleteTask(task.taskId)">[x]</span>
+        <hr>
       </v-list-item>
     </v-list>
-    <v-form @submit.prevent="deleteTask">
-      <v-text-field v-model="deleteId" type="text" label="Geben Sie bitte die Id des zu löschenden Eintrags ein."></v-text-field>
-      <v-btn color="primary" type="submit">Löschen</v-btn>
-    </v-form>
   </v-container>
 </template>
 

@@ -32,10 +32,10 @@ const submitForm = async () => {
     const response = await axios.post('https://codersbay.a-scho-wurscht.at/api/auth/register', userData)
     console.log(response.data.accessToken)
     localStorage.setItem('accessToken', response.data.accessToken)
-    tokenStore.setToken(response.data.accessToken)
+   // tokenStore.setToken(response.data.accessToken)
     console.log(password.value)
-    localStorage.setItem('defaultListId', response.data.taskListId)
-    console.log(response.data.taskListId)
+   // localStorage.setItem('defaultListId', response.data.taskListId)
+   // console.log(response.data.taskListId)
     if (response.status === 200) {
       router.push('/list')
     }
@@ -53,6 +53,7 @@ const submitForm = async () => {
     else if (err.isAxiosError && err.response.status === 409) {
       alert('An account already exists for this email address. Please use another.')
     }
+    console.log(err)
   }
 }
 </script>

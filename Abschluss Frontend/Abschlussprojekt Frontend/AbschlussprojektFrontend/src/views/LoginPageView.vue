@@ -11,8 +11,8 @@ const error = ref('');
 //const loading = ref(false);
 const tokenStore = useTokenStore();
 const loginData = ref({
-  email: 'why@is.at',
-  password: '12345678',
+  email: '', // 'why@is.at',
+  password: ''// '12345678',
 });
 
 
@@ -78,8 +78,8 @@ function register() {
       <v-card-title class="text-center">Login</v-card-title>
       <v-card-text>
         <v-form @submit.prevent="login">
-          <v-text-field v-model="email" label="Email" type="email"></v-text-field>
-          <v-text-field v-model="password" label="Password" type="password"></v-text-field>
+          <v-text-field v-model="loginData.email" label="Email" type="email"></v-text-field>
+          <v-text-field v-model="loginData.password" label="Password" type="password"></v-text-field>
           <v-alert v-if="error" type="error" dismissible>{{ error }}</v-alert>
           <v-btn type="submit" color="primary" class="mr-4">
             <span>Login</span>

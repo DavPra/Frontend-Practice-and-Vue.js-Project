@@ -6,6 +6,7 @@ export const useTaskListStore = defineStore({
   state: () => ({
     taskListId: localStorage.getItem('taskListId') || '',
     listItems: [],
+    tasks: [],
     answer: '',
     taskId: localStorage.getItem('taskId') || '',
   }),

@@ -12,7 +12,7 @@
             <v-card-actions>
               <v-btn color="primary" to="/login">Login</v-btn>
               <v-btn color="primary" to="/register">Registrieren</v-btn>
-              <v-btn color="primary" to="/skip">Skip</v-btn>
+
             </v-card-actions>
           </v-card>
         </v-col>
